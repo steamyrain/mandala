@@ -3,6 +3,11 @@ package gui.components;
 import com.jfoenix.controls.*;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.ViewNode;
+import io.datafx.controller.flow.FlowException;
+import io.datafx.controller.flow.FlowHandler;
+import io.datafx.controller.flow.context.FXMLViewFlowContext;
+import io.datafx.controller.flow.context.ViewFlowContext;
+import io.datafx.controller.util.VetoException;
 import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
@@ -34,7 +39,8 @@ public class BukuTamuController {
     private JFXComboBox<String> provinsi;
     @FXML
     private JFXComboBox<String> kota;
-
+    @FXMLViewFlowContext
+    private ViewFlowContext context;
     private Account newAccount;
     private String validatorMessage = "Input required";
     private SignupService signupService = new SignupService();
@@ -70,6 +76,15 @@ public class BukuTamuController {
                 if(error!=null) System.out.println( "Error : "+error);
                 else{
                     System.out.println("Submit Succeded");
+                    /*FlowHandler contentFlowHandler = (FlowHandler)context.getRegisteredObject("ContentFlowHandler");
+                    try {
+                        contentFlowHandler.handle(HomeController.class.getSimpleName());
+                    } catch (VetoException e) {
+                        e.printStackTrace();
+                    } catch (FlowException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("FINISHED LOADING: " + HomeController.class.getSimpleName()); */
                 }
             }
             else{

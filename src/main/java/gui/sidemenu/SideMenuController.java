@@ -2,6 +2,7 @@ package gui.sidemenu;
 
 import com.jfoenix.controls.JFXListView;
 import gui.components.BukuTamuController;
+import gui.components.HomeController;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.ViewNode;
 import io.datafx.controller.flow.Flow;
@@ -54,10 +55,14 @@ public class SideMenuController {
             }).start();
         });
         Label bukutamu = Creator.createLabel("BukuTamu");
+        Label home = Creator.createLabel("Home");
         Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
         context.register("bukutamu",bukutamu);
+        context.register("home",home);
         sideList.getItems().addAll(bukutamu);
+        sideList.getItems().addAll(home);
         bindNodeToController(bukutamu, BukuTamuController.class, contentFlow);
+        bindNodeToController(home, HomeController.class,contentFlow);
     }
 
     private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow) {
