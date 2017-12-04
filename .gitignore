@@ -1,3 +1,4 @@
+
 .gradle
 #Ignore build dir
 /build/
@@ -67,6 +68,10 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
+# Database
+*.db
+*.sql
 
 # Compiled class file
 *.class
