@@ -2,6 +2,7 @@ package gui.sidemenu;
 
 import com.jfoenix.controls.JFXListView;
 import gui.components.BukuTamuController;
+import gui.components.GaleriAktivitasController;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.ViewNode;
 import io.datafx.controller.flow.Flow;
@@ -24,10 +25,6 @@ import java.util.Objects;
 public class SideMenuController {
     @FXMLViewFlowContext
     private ViewFlowContext context;
-
-    /*@FXML
-    @ActionTrigger("bukutamu")
-    private Label bukutamu;*/
 
     @ViewNode
     private JFXListView<Label> sideList;
@@ -53,11 +50,16 @@ public class SideMenuController {
                 });
             }).start();
         });
-        Label bukutamu = Creator.createLabel("BukuTamu");
+        Label bukutamu = Creator.createLabel("Buku Tamu");
+        Label galeriAktivitas = Creator.createLabel("Galeri Aktivitas");
         Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
         context.register("bukutamu",bukutamu);
-        sideList.getItems().addAll(bukutamu);
+        context.register("galeriAktivitas",galeriAktivitas);
+        context.register("sideList",sideList);
+        sideList.getItems().add(bukutamu);
+        sideList.getItems().add(galeriAktivitas);
         bindNodeToController(bukutamu, BukuTamuController.class, contentFlow);
+        bindNodeToController(galeriAktivitas, GaleriAktivitasController.class,contentFlow);
     }
 
     private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow) {

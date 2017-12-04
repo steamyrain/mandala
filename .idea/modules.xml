@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Mandala.iml" filepath="$PROJECT_DIR$/.idea/modules/Mandala.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Mandala_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Mandala_main.iml" group="Mandala" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Mandala_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Mandala_test.iml" group="Mandala" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Projects-Mandala_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Projects-Mandala_main.iml" group="Mandala" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Projects-Mandala_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Projects-Mandala_test.iml" group="Mandala" />
     </modules>
   </component>
 </project>

@@ -52,15 +52,16 @@ public final class MainMenuController {
                 drawer.close();
             }
         });
+        //CONTENT
         context = new ViewFlowContext();
         Flow innerFlow = new Flow(BukuTamuController.class);
-
         final FlowHandler flowHandler = innerFlow.createHandler(context);
         context.register("ContentFlowHandler",flowHandler);
         context.register("ContentFlow",innerFlow);
         final Duration containerAnimationDuration = Duration.millis(320);
         drawer.setContent(flowHandler.start(new ExtendedAnimatedFlowContainer(containerAnimationDuration, SWIPE_LEFT)));
         context.register("ContentPane",drawer.getContent().get(0));
+        //SIDEMENU
         Flow sideMenuFlow = new Flow(SideMenuController.class);
         final FlowHandler sideMenuFlowHandler = sideMenuFlow.createHandler(context);
         drawer.setSidePane(sideMenuFlowHandler.start(new ExtendedAnimatedFlowContainer(containerAnimationDuration, SWIPE_LEFT)));

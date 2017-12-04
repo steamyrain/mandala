@@ -20,7 +20,7 @@
                                 </JFXHamburger>
                             </StackPane>
                         </JFXRippler>
-                        <Label>Ciburuy Desktop App</Label>
+                        <Label>Mandala</Label>
                     </leftItems>
                 </JFXToolbar>
             </VBox>
