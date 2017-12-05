@@ -1,4 +1,5 @@
 package model;
 
-public class Disposable {
+public interface Disposable {
+    void dispose();
 }

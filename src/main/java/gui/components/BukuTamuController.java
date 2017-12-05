@@ -12,6 +12,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import model.Account;
+import model.Chosen;
 import task.SignupService;
 import util.DBHandler;
 import util.FXUtil;
@@ -76,15 +77,9 @@ public class BukuTamuController {
                 if(error!=null) System.out.println( "Error : "+error);
                 else{
                     System.out.println("Submit Succeded");
-                    /*FlowHandler contentFlowHandler = (FlowHandler)context.getRegisteredObject("ContentFlowHandler");
-                    try {
-                        contentFlowHandler.handle(HomeController.class.getSimpleName());
-                    } catch (VetoException e) {
-                        e.printStackTrace();
-                    } catch (FlowException e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println("FINISHED LOADING: " + HomeController.class.getSimpleName()); */
+                    Chosen.setViewFlowContext(context);
+                    Chosen.setAccount(newAccount);
+                    Chosen.goTo(HomeController.class);
                 }
             }
             else{

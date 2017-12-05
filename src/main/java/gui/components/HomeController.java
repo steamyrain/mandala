@@ -20,10 +20,13 @@ public class HomeController {
     private JFXButton resetButton;
     @PostConstruct
     private void init(){
-        /*JFXListView sideList = (JFXListView) context.getRegisteredObject("sideList");
-        Label home = (Label) context.getRegisteredObject("home");
-        sideList.getItems().clear();
-        sideList.getItems().add(home);*/
+        JFXListView sideList = (JFXListView) context.getRegisteredObject("SideList");
+        Label home = (Label) context.getRegisteredObject("Home");
+        Label bukuTamu = (Label) context.getRegisteredObject("BukuTamu");
+        if(sideList.getItems().contains(bukuTamu)) {
+            sideList.getItems().clear();
+            sideList.getItems().add(home);
+        }
     }
     @FXML
     private void save(){

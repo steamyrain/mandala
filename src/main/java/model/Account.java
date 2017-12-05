@@ -7,7 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import util.DBHandler;
 
-public class Account {
+public class Account implements Disposable{
     private StringProperty namaDepan = new SimpleStringProperty();
     private StringProperty namaBelakang = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
@@ -73,5 +73,8 @@ public class Account {
     public IntegerProperty countryIDProperty(){return countryID;}
     public IntegerProperty stateIDProperty(){return stateID;}
     public IntegerProperty cityIDProperty(){return cityID;}
-
+    @Override
+    public void dispose(){
+        //TODO-dispose
+    }
 }

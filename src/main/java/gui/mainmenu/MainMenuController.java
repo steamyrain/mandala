@@ -54,10 +54,10 @@ public final class MainMenuController {
         });
         context = new ViewFlowContext();
         Flow innerFlow = new Flow(BukuTamuController.class);
-
         final FlowHandler flowHandler = innerFlow.createHandler(context);
         context.register("ContentFlowHandler",flowHandler);
         context.register("ContentFlow",innerFlow);
+        context.register("SideBar",drawer);
         final Duration containerAnimationDuration = Duration.millis(320);
         drawer.setContent(flowHandler.start(new ExtendedAnimatedFlowContainer(containerAnimationDuration, SWIPE_LEFT)));
         context.register("ContentPane",drawer.getContent().get(0));

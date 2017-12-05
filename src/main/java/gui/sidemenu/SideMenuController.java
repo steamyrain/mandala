@@ -1,5 +1,6 @@
 package gui.sidemenu;
 
+import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXListView;
 import gui.components.BukuTamuController;
 import gui.components.HomeController;
@@ -38,8 +39,10 @@ public class SideMenuController {
     public void init() {
         Objects.requireNonNull(context, "context");
         FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
+        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+        JFXDrawer drawer = (JFXDrawer)context.getRegisteredObject("SideBar");
         sideList.propagateMouseEventsToParent();
-        sideList.getSelectionModel().selectedItemProperty().addListener((o,oldVal,newVal) -> {
+        /*sideList.getSelectionModel().selectedItemProperty().addListener((o,oldVal,newVal) -> {
             new Thread(()->{
                 Platform.runLater(()->{
                     if (newVal != null) {
@@ -53,19 +56,27 @@ public class SideMenuController {
                     }
                 });
             }).start();
-        });
-        Label bukutamu = Creator.createLabel("BukuTamu");
+        });*/
+        Label bukuTamu = Creator.createLabel("BukuTamu");
         Label home = Creator.createLabel("Home");
-        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
-        context.register("bukutamu",bukutamu);
-        context.register("home",home);
-        sideList.getItems().addAll(bukutamu);
-        sideList.getItems().addAll(home);
-        bindNodeToController(bukutamu, BukuTamuController.class, contentFlow);
-        bindNodeToController(home, HomeController.class,contentFlow);
+        context.register("BukuTamu",bukuTamu);
+        context.register("Home",home);
+        context.register("SideList",sideList);
+        sideList.getItems().addAll(bukuTamu);
+        bindNodeToController(bukuTamu, BukuTamuController.class, contentFlow,contentFlowHandler,drawer);
+        bindNodeToController(home, HomeController.class,contentFlow,contentFlowHandler,drawer);
     }
 
-    private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow) {
-        flow.withGlobalLink(node.getId(), controllerClass);
+    private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow,FlowHandler flowHandler,JFXDrawer drawer) {
+        flow.withGlobalLink(controllerClass.getSimpleName(), controllerClass);
+        node.setOnMouseClicked((e)->{
+            try{
+                flowHandler.handle(controllerClass.getSimpleName());
+                drawer.close();
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
+        });
     }
 }
