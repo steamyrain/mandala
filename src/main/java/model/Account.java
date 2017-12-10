@@ -26,6 +26,17 @@ public class Account implements Disposable{
         Account account = new Account();
         return account;
     }
+    public static Account createAcc(Account acc){
+        Account account = new Account();
+        account.setNamaDepan(acc.getNamaDepan());
+        account.setNamaBelakang(acc.getNamaBelakang());
+        account.setEmail(acc.getEmail());
+        account.setNoTelp(acc.getNoTelp());
+        account.setCountryID(acc.getCountryID());
+        account.setStateID(acc.getStateID());
+        account.setCityID(acc.getCityID());
+        return account;
+    }
     public static Account createAcc(AccountRecord record){
         Account account = new Account();
         account.setNamaDepan(record.getNamaDepan());

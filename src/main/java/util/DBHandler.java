@@ -146,6 +146,25 @@ public class DBHandler {
 
         return null;
     }
+    public static String update(Account account,Account oldAcc) {
+        DSLContext exec = getExecutor();
+        try {
+            exec.update(Tables.ACCOUNT)
+                    .set(Tables.ACCOUNT.EMAIL, account.getEmail())
+                    .set(Tables.ACCOUNT.PHONENUMBER, account.getNoTelp())
+                    .set(Tables.ACCOUNT.COUNTRY_ID, account.getCountryID())
+                    .set(Tables.ACCOUNT.STATE_ID, account.getStateID())
+                    .set(Tables.ACCOUNT.CITY_ID, account.getCityID())
+                    .where(Tables.ACCOUNT.EMAIL.equal(oldAcc.getEmail()))
+                    .executeAsync();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error in updating data";
+        } finally {
+            exec.close();
+        }
+        return null;
+    }
     public static Object deserialize(Object object) {
         if (object == null) return null;
         return deserialize((byte[]) object);
