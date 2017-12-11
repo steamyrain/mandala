@@ -2,17 +2,14 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.StackPane?>
-<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
-           xmlns="http://javafx.com/javafx/2.2">
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="400.0" prefWidth="600.0" vgap="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox alignment="CENTER" spacing="20.0">
          <children>
             <Label text="MASUK SEBAGAI">
                <font>
@@ -29,7 +26,8 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                     </children></VBox>
+                     </children>
+                  </VBox>
                   <VBox alignment="CENTER" prefHeight="250.0" prefWidth="167.0" style="-fx-background-color: #eaac1e;">
                      <children>
                         <FontAwesomeIconView glyphName="GRADUATION_CAP" size="50" />
@@ -38,7 +36,8 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                     </children></VBox>
+                     </children>
+                  </VBox>
                   <VBox alignment="CENTER" prefHeight="250.0" prefWidth="167.0" style="-fx-background-color: #eaac1e;">
                      <children>
                         <FontAwesomeIconView glyphName="PIED_PIPER_ALT" size="50" />
@@ -47,10 +46,11 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                     </children></VBox>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>
-      </FlowPane>
+      </VBox>
    </children>
 </StackPane>

@@ -29,7 +29,8 @@ public class Main extends Application {
         flow.createHandler(flowContext).start(container);
         JFXDecorator decorator = new JFXDecorator(stage, container.getView());
         decorator.setCustomMaximize(true);
-
+        System.out.println("java version: "+System.getProperty("java.version"));
+        System.out.println("javafx.version: " + System.getProperty("javafx.version"));
         double width = 800;
         double height = 600;
         try {

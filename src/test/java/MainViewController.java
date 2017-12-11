@@ -12,6 +12,7 @@ import io.datafx.controller.util.VetoException;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import org.junit.Test;
 
 import javax.annotation.PostConstruct;
 
@@ -40,8 +41,8 @@ public class MainViewController {
     public void init()throws FlowException{
         context = new ViewFlowContext();
         Flow inner = new Flow(Step1stController.class)
-                .withLink(Step1stController.class,"next",Step2ndController.class)
-                .withLink(Step2ndController.class,"next",Step3rdController.class);
+                .withLink(Step1stController.class,"next",TestLoginController.class)
+                .withLink(TestLoginController.class,"next",Step3rdController.class);
         flowHandler = inner.createHandler(context);
         centerPane.getChildren().add(flowHandler.start(new AnimatedFlowContainer(Duration.millis(320), ContainerAnimations.ZOOM_IN)));
 

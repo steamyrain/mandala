@@ -28,10 +28,6 @@ public class SideMenuController {
     @FXMLViewFlowContext
     private ViewFlowContext context;
 
-    /*@FXML
-    @ActionTrigger("bukutamu")
-    private Label bukutamu;*/
-
     @ViewNode
     private JFXListView<Label> sideList;
 
@@ -39,11 +35,12 @@ public class SideMenuController {
     @PostConstruct
     public void init() {
         Objects.requireNonNull(context, "context");
-        FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
-        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
-        JFXDrawer drawer = (JFXDrawer)context.getRegisteredObject("SideBar");
         sideList.propagateMouseEventsToParent();
-        /*sideList.getSelectionModel().selectedItemProperty().addListener((o,oldVal,newVal) -> {
+
+        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+        FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
+        JFXDrawer drawer = (JFXDrawer)context.getRegisteredObject("SideBar");
+        sideList.getSelectionModel().selectedItemProperty().addListener((o,oldVal,newVal) -> {
             new Thread(()->{
                 Platform.runLater(()->{
                     if (newVal != null) {
@@ -57,30 +54,25 @@ public class SideMenuController {
                     }
                 });
             }).start();
-        });*/
-        Label bukuTamu = Creator.createLabel("BukuTamu");
-        Label home = Creator.createLabel("Home");
+        });
+
+        Label daftar = Creator.createLabel("Daftar");
+        Label profile = Creator.createLabel("Home");
         Label login = Creator.createLabel("Login");
-        context.register("BukuTamu",bukuTamu);
-        context.register("Home",home);
+
+        context.register("Daftar",daftar);
+        context.register("Profile",profile);
         context.register("Login",login);
         context.register("SideList",sideList);
-        sideList.getItems().addAll(bukuTamu);
-        bindNodeToController(bukuTamu, LoginController.class, contentFlow,contentFlowHandler,drawer);
-        bindNodeToController(bukuTamu, BukuTamuController.class, contentFlow,contentFlowHandler,drawer);
-        bindNodeToController(home, HomeController.class,contentFlow,contentFlowHandler,drawer);
+
+        sideList.getItems().addAll(login,daftar);
+
+        bindNodeToController(login, LoginController.class,contentFlow);
+        bindNodeToController(daftar, BukuTamuController.class,contentFlow);
+        bindNodeToController(profile, HomeController.class,contentFlow);
     }
 
-    private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow,FlowHandler flowHandler,JFXDrawer drawer) {
-        flow.withGlobalLink(controllerClass.getSimpleName(), controllerClass);
-        node.setOnMouseClicked((e)->{
-            try{
-                flowHandler.handle(controllerClass.getSimpleName());
-                drawer.close();
-            }
-            catch(Exception ex){
-                ex.printStackTrace();
-            }
-        });
+    private void bindNodeToController(Node node, Class controllerClass, Flow flow) {
+        flow.withGlobalLink(node.getId(), controllerClass);
     }
 }
