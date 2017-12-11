@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import datafx.ExtendedAnimatedFlowContainer;
 import gui.components.BukuTamuController;
+import gui.components.LoginController;
 import gui.sidemenu.SideMenuController;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.ViewNode;
@@ -53,7 +54,8 @@ public final class MainMenuController {
             }
         });
         context = new ViewFlowContext();
-        Flow innerFlow = new Flow(BukuTamuController.class);
+        //Flow innerFlow = new Flow(BukuTamuController.class);
+        Flow innerFlow = new Flow(LoginController.class);
         final FlowHandler flowHandler = innerFlow.createHandler(context);
         context.register("ContentFlowHandler",flowHandler);
         context.register("ContentFlow",innerFlow);

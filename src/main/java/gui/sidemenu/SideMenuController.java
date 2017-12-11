@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXListView;
 import gui.components.BukuTamuController;
 import gui.components.HomeController;
+import gui.components.LoginController;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.ViewNode;
 import io.datafx.controller.flow.Flow;
@@ -59,10 +60,13 @@ public class SideMenuController {
         });*/
         Label bukuTamu = Creator.createLabel("BukuTamu");
         Label home = Creator.createLabel("Home");
+        Label login = Creator.createLabel("Login");
         context.register("BukuTamu",bukuTamu);
         context.register("Home",home);
+        context.register("Login",login);
         context.register("SideList",sideList);
         sideList.getItems().addAll(bukuTamu);
+        bindNodeToController(bukuTamu, LoginController.class, contentFlow,contentFlowHandler,drawer);
         bindNodeToController(bukuTamu, BukuTamuController.class, contentFlow,contentFlowHandler,drawer);
         bindNodeToController(home, HomeController.class,contentFlow,contentFlowHandler,drawer);
     }

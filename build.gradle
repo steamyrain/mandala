@@ -17,7 +17,7 @@ dependencies {
     compile group: 'com.jfoenix',name:'jfoenix',version:'1.10.0'
     compile 'org.xerial:sqlite-jdbc:3.21.0'
     compile 'org.jooq:jooq:3.10.1'
-    compile 'de.jensd:fontawesomefx-commons:9.1.2'
+    compile 'de.jensd:fontawesomefx:8.9'
 }
 
 
