@@ -4,6 +4,8 @@
 
 .root {
     -fx-font-family: "Roboto";
+    -fx-background-color: derive(#ffb200,-10%);
+    -icons-color: WHITE;
 }
 
 .side-menu {
@@ -36,7 +38,7 @@
 }
 
 .jfx-drawer-side-pane {
-    -fx-background-color: WHITE;
+    -fx-background-color: #ffb200;
 }
 
 /*******************************************************************************
@@ -229,7 +231,30 @@
     -fx-padding: 0.0 10.0 0.0 5.0;
     -fx-cursor: hand;
 }
+/*******************************************************************************
+ *                                                                             *
+ * LOGIN FXML                                                                  *
+ *                                                                             *
+ ******************************************************************************/
+ .login-vbox .pub-login-vbox,
+ .login-vbox .res-login-vbox,
+ .login-vbox .adm-login-vbox{
+    -fx-background-color: #ffb200;
+    -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0);
+ }
 
+ .login-vbox .label,
+ .login-vbox .glyph-icon{
+    -fx-text-fill: WHITE;
+    -fx-fill: WHITE;
+    -fx-font-family: "Roboto Bold";
+ }
+
+ .login-vbox .pub-login-vbox:hover,
+ .login-vbox .res-login-vbox:hover,
+ .login-vbox .adm-login-vbox:hover{
+   -fx-cursor: hand;
+ }
 /*******************************************************************************
  *                                                                             *
  * JFX Radio Button                                                            *
@@ -427,18 +452,23 @@
 *******************************************************************************/
 
 .jfx-list-cell {
-    -fx-background-insets: 0.0;
+    /*-fx-background-insets: 0.0;*/
     -fx-text-fill: BLACK;
+    -fx-font-family: "Roboto Bold";
+    -fx-background-color: #ffb200;
 }
-
+.jfx-list-cell .label{
+    -fx-text-fill: WHITE;
+}
 .jfx-list-cell:odd,
 .jfx-list-cell:even {
-    -fx-background-color: WHITE;
+    -fx-background-color: #ffb200;
 }
 
 .jfx-list-cell:filled:hover,
 .jfx-list-cell:selected .label {
-    -fx-text-fill: black;
+    -fx-cursor: hand;
+    -fx-text-fill: BLACK;
 }
 
 .jfx-list-cell .jfx-rippler {
@@ -447,15 +477,16 @@
 
 .jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
 .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
-    -fx-background-color: rgba(255.0, 178.0, 0.0, 0.2);
+    -fx-background-color: derive(#ffb200,-20%);
 }
 
 .jfx-list-view {
     -fx-background-insets: 0.0;
     -jfx-cell-horizontal-margin: 0.0;
     -jfx-cell-vertical-margin: 5.0;
-    -jfx-vertical-gap: 10.0;
+    -jfx-vertical-gap: 10;
     -jfx-expanded: false;
+    -fx-background-color:#ffb200;
 }
 
 .custom-jfx-list-view .jfx-list-cell:odd:selected > .jfx-rippler > StackPane,

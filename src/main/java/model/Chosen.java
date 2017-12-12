@@ -38,7 +38,7 @@ public class Chosen {
 
     public static void goTo(Class controller) {
         String controllerName = controller.getSimpleName();
-        FlowHandler centerFlowHandler = (FlowHandler)context.getRegisteredObject("ContentFlowHandler");
+        FlowHandler centerFlowHandler = (FlowHandler)Chosen.context.getRegisteredObject("ContentFlowHandler");
         try {
             centerFlowHandler.handle(controllerName);
         } catch (VetoException e) {
@@ -49,7 +49,7 @@ public class Chosen {
         System.out.println("FINISHED LOADING: " + controllerName); //TODO -del
     }
     public static void goTo(String actionID) {
-        FlowHandler contentFlowHandler = (FlowHandler)context.getRegisteredObject("ContentFlowHandler");
+        FlowHandler contentFlowHandler = (FlowHandler)Chosen.context.getRegisteredObject("ContentFlowHandler");
         try {
             contentFlowHandler.handle(actionID);
         } catch (VetoException e) {

@@ -9,18 +9,18 @@
 
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="CENTER" spacing="20.0">
+      <VBox fx:id="loginVBox" alignment="CENTER" spacing="20.0" styleClass="login-vbox">
          <children>
             <Label text="MASUK SEBAGAI">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" prefHeight="250.0" prefWidth="600.0" spacing="20.0">
+            <HBox alignment="CENTER" prefHeight="250.0" prefWidth="600.0" spacing="20.0" VBox.vgrow="NEVER" >
                <children>
-                  <VBox alignment="CENTER" prefHeight="250.0" prefWidth="167.0" style="-fx-background-color: #eaac1e;">
+                  <VBox fx:id="pubLoginVBox" alignment="CENTER" onMouseClicked="#LoginPublic" prefHeight="250.0" prefWidth="167.0" HBox.hgrow="NEVER" styleClass="pub-login-vbox">
                      <children>
-                        <FontAwesomeIconView glyphName="USER" size="60" />
+                        <FontAwesomeIconView glyphName="USER" size="60" style="-fx-font-family: &quot;FontAwesome&quot;;" styleClass="public-icon"/>
                         <Label text="UMUM">
                            <font>
                               <Font size="18.0" />
@@ -28,9 +28,9 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="250.0" prefWidth="167.0" style="-fx-background-color: #eaac1e;">
+                  <VBox fx:id="resLoginVBox" alignment="CENTER" onMouseClicked="#LoginResearcher" prefHeight="250.0" prefWidth="167.0" HBox.hgrow="NEVER" styleClass="res-login-vbox">
                      <children>
-                        <FontAwesomeIconView glyphName="GRADUATION_CAP" size="50" />
+                        <FontAwesomeIconView glyphName="GRADUATION_CAP" size="50" style="-fx-font-family: &quot;FontAwesome&quot;;" />
                         <Label text="PENELITI">
                            <font>
                               <Font size="18.0" />
@@ -38,9 +38,9 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="250.0" prefWidth="167.0" style="-fx-background-color: #eaac1e;">
+                  <VBox fx:id="admLoginVBox" alignment="CENTER" onMouseClicked="#LoginAdmin" prefHeight="250.0" prefWidth="167.0" HBox.hgrow="NEVER" styleClass="adm-login-vbox">
                      <children>
-                        <FontAwesomeIconView glyphName="PIED_PIPER_ALT" size="50" />
+                        <FontAwesomeIconView glyphName="PIED_PIPER_ALT" size="50" style="-fx-font-family: &quot;FontAwesome&quot;;" />
                         <Label text="ADMIN">
                            <font>
                               <Font size="18.0" />

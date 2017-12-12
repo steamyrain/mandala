@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXListView;
 import gui.components.BukuTamuController;
 import gui.components.HomeController;
 import gui.components.LoginController;
+import gui.components.LoginFormController;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.ViewNode;
 import io.datafx.controller.flow.Flow;
@@ -44,6 +45,7 @@ public class SideMenuController {
             new Thread(()->{
                 Platform.runLater(()->{
                     if (newVal != null) {
+                        System.out.println(newVal);
                         try {
                             contentFlowHandler.handle(newVal.getId());
                         } catch (VetoException exc) {
@@ -59,7 +61,7 @@ public class SideMenuController {
         Label daftar = Creator.createLabel("Daftar");
         Label profile = Creator.createLabel("Home");
         Label login = Creator.createLabel("Login");
-
+        //Label loginForm = Creator.createLabel("Login Form");
         context.register("Daftar",daftar);
         context.register("Profile",profile);
         context.register("Login",login);
@@ -70,9 +72,15 @@ public class SideMenuController {
         bindNodeToController(login, LoginController.class,contentFlow);
         bindNodeToController(daftar, BukuTamuController.class,contentFlow);
         bindNodeToController(profile, HomeController.class,contentFlow);
+        //bindNodeToController(loginForm,LoginFormController.class,contentFlow);
+        bindNodeToController(LoginFormController.class,contentFlow);
+        bindNodeToController(HomeController.class,contentFlow);
     }
 
     private void bindNodeToController(Node node, Class controllerClass, Flow flow) {
         flow.withGlobalLink(node.getId(), controllerClass);
+    }
+    private void bindNodeToController(Class controllerClass, Flow flow) {
+        flow.withGlobalLink(controllerClass.getSimpleName(), controllerClass);
     }
 }
