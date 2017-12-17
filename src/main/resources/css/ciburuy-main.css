@@ -247,6 +247,8 @@
  .login-vbox .glyph-icon{
     -fx-text-fill: WHITE;
     -fx-fill: WHITE;
+    -glyph-size: 50px;
+    -fx-font-size: 16px;
     -fx-font-family: "Roboto Bold";
  }
 
@@ -255,6 +257,31 @@
  .login-vbox .adm-login-vbox:hover{
    -fx-cursor: hand;
  }
+ /*******************************************************************************
+  *                                                                             *
+  * LOGIN FORM FXML                                                             *
+  *                                                                             *
+  ******************************************************************************/
+  .link-signUp-jfx-button{
+    -fx-text-fill: WHITE;
+    -fx-font-size: 12.0px;
+  }
+  .link-signUp-jfx-button:hover,
+  .link-signUp-jfx-button:armed{
+    -fx-text-fill: #4286f4;
+  }
+
+  .login-jfx-button {
+    -fx-background-color: #4286f4;
+    -fx-text-fill: WHITE;
+    -fx-rippler-fill: #3463af;
+  }
+
+  .login-jfx-button:armed,
+  .login-jfx-button:hover {
+    -fx-text-fill: BLACK;
+  }
+
 /*******************************************************************************
  *                                                                             *
  * JFX Radio Button                                                            *
@@ -433,12 +460,15 @@
 .jfx-text-field, .jfx-password-field, .jfx-text-area {
     -fx-background-color: transparent;
     -fx-font-weight: BOLD;
-    -fx-prompt-text-fill: #808080;
+    -fx-prompt-text-fill: WHITE;
     -fx-alignment: top-left;
     -fx-max-width: 300.0;
     -fx-pref-width: 300.0;
-    -jfx-focus-color: #4059A9;
-    -jfx-unfocus-color: #4d4d4d;
+    -jfx-focus-color: #000000;
+    -jfx-unfocus-color: #ffffff;
+}
+.jfx-text-field:focused, .jfx-password-field:focused, .jfx-text-area:focused {
+    -fx-prompt-text-fill: WHITE;
 }
 
 .jfx-text-area .viewport {

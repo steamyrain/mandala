@@ -7,6 +7,7 @@ import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 import javax.annotation.PostConstruct;
 import javax.swing.text.View;
@@ -15,6 +16,8 @@ import javax.swing.text.View;
 public class LoginFormController {
     @FXML
     private JFXButton loginButton;
+    @FXML
+    private JFXButton linkSignUpButton;
     @FXMLViewFlowContext
     private ViewFlowContext context;
     private JFXListView sideList;
@@ -23,8 +26,10 @@ public class LoginFormController {
         sideList = (JFXListView) context.getRegisteredObject("SideList");
         sideList.getSelectionModel().clearSelection();
     }
-
     @FXML
+    public void goToSignUp(){
+        //TODO
+    }
     public void login(){
         //TODO
     }
