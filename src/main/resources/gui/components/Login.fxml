@@ -11,16 +11,12 @@
    <children>
       <VBox fx:id="loginVBox" alignment="CENTER" spacing="20.0" styleClass="login-vbox">
          <children>
-            <Label text="MASUK SEBAGAI">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
+            <Label text="MASUK SEBAGAI"/>
             <HBox alignment="CENTER" prefHeight="250.0" prefWidth="600.0" spacing="20.0" VBox.vgrow="NEVER" >
                <children>
                   <VBox fx:id="pubLoginVBox" alignment="CENTER" onMouseClicked="#LoginPublic" prefHeight="250.0" prefWidth="167.0" HBox.hgrow="NEVER" styleClass="pub-login-vbox">
                      <children>
-                        <FontAwesomeIconView glyphName="USER" size="60" style="-fx-font-family: &quot;FontAwesome&quot;;" styleClass="public-icon"/>
+                        <FontAwesomeIconView glyphName="USER" size="50" style="-fx-font-family: &quot;FontAwesome&quot;;" styleClass="public-icon"/>
                         <Label text="UMUM">
                            <font>
                               <Font size="18.0" />

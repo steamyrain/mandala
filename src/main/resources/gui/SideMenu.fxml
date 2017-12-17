@@ -8,6 +8,6 @@
     <styleClass>
         <String fx:value="side-menu"/>
     </styleClass>
-    <JFXListView fx:id="sideList">
+    <JFXListView fx:id="sideList" styleClass="side-list">
     </JFXListView>
 </StackPane>

@@ -8,7 +8,7 @@
 <StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
            xmlns="http://javafx.com/javafx/2.2">
     <!-- Header -->
-    <BorderPane>
+    <BorderPane styleClass="border-pane">
         <top>
             <VBox spacing="20">
                 <JFXToolbar>
@@ -22,6 +22,15 @@
                         </JFXRippler>
                         <Label>Ciburuy Desktop App</Label>
                     </leftItems>
+                    <rightItems>
+                        <JFXRippler fx:id="optionsRippler" maskType="CIRCLE"
+                                    style="-fx-ripple-color:WHITE;">
+                            <StackPane fx:id="optionsBurger">
+                                <JFXHamburger styleClass="jfx-options-burger">
+                                </JFXHamburger>
+                            </StackPane>
+                        </JFXRippler>
+                    </rightItems>
                 </JFXToolbar>
             </VBox>
         </top>

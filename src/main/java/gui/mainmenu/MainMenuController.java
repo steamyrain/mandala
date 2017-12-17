@@ -2,6 +2,8 @@ package gui.mainmenu;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXPopup;
 import com.jfoenix.svg.SVGGlyph;
 import com.jfoenix.svg.SVGGlyphLoader;
 import datafx.ExtendedAnimatedFlowContainer;
@@ -16,7 +18,9 @@ import io.datafx.controller.flow.FlowHandler;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.animation.Transition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
@@ -33,6 +37,8 @@ public final class MainMenuController {
     @FXML
     private StackPane root;
     @FXML
+    private StackPane optionsBurger;
+    @FXML
     private StackPane titleBurgerContainer;
     @FXML
     private JFXHamburger titleBurger;
@@ -43,15 +49,26 @@ public final class MainMenuController {
     private FlowHandler innerFlowHandler;
     private Flow innerFlow;
     final Duration containerAnimationDuration = Duration.millis(320);
+    private JFXPopup toolbarPopup;
     @PostConstruct
     public void init()throws Exception{
+        initRightToolbar();
         innerFlow = new Flow(LoginController.class);
         innerFlowHandler = innerFlow.createHandler(context);
         initCenter();
         initSideBar();
     }
-    private void initToolbar() {
+    private void initRightToolbar() throws Exception{
         //TODO ADD TOOLBAR
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/popup/UserPopUp.fxml"));
+        loader.setController(new InputController());
+        toolbarPopup = new JFXPopup(loader.load());
+
+        optionsBurger.setOnMouseClicked(e -> toolbarPopup.show(optionsBurger,
+                JFXPopup.PopupVPosition.TOP,
+                JFXPopup.PopupHPosition.RIGHT,
+                -12,
+                65));
     }
 
     private void initCenter() throws FlowException {
@@ -86,4 +103,16 @@ public final class MainMenuController {
         });
     }
 
+    public static final class InputController {
+        @FXML
+        private JFXListView<?> toolbarPopupList;
+
+        // close application
+        @FXML
+        private void submit() {
+            if (toolbarPopupList.getSelectionModel().getSelectedIndex() == 1) {
+                Platform.exit();
+            }
+        }
+    }
 }

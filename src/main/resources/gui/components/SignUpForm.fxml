@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="337.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane prefHeight="368.0" prefWidth="517.0" styleClass="signUp-form-border-pane">
+            <top>
+                <Label text="Sign Up" styleClass="signUp-title"/>
+            </top>
+            <bottom>
+                <JFXButton fx:id="signUpButton" onAction="#signUp" prefHeight="70.0" prefWidth="100.0" text="Sign up" BorderPane.alignment="CENTER" />
+            </bottom>
+            <center>
+                <GridPane alignment="CENTER" hgap="20.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                  <HBox alignment="BOTTOM_RIGHT" spacing="20.0">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <children>
+                              <JFXTextField fx:id="emailTextField" labelFloat="true" prefHeight="25.0" prefWidth="187.0" promptText="*Email" />
+                        <FontAwesomeIconView fx:id="email-check" fill="#63e869" glyphName="CHECK_CIRCLE" size="20" style="-fx-font-family: &quot;FontAwesome&quot;;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_RIGHT" spacing="20.0" GridPane.rowIndex="1">
+                     <children>
+                              <JFXPasswordField fx:id="passwordTextField" labelFloat="true" prefHeight="25.0" prefWidth="187.0" promptText="*Password" />
+                        <FontAwesomeIconView fx:id="password-check" fill="#63e869" glyphName="CHECK_CIRCLE" size="20" style="-fx-font-family: &quot;FontAwesome&quot;;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_LEFT" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                              <JFXPasswordField fx:id="retypePasswordTextField" labelFloat="true" prefHeight="25.0" prefWidth="178.0" promptText="*Retype Password" />
+                        <FontAwesomeIconView fx:id="retype-password-check" fill="#63e869" glyphName="CHECK_CIRCLE" size="20" style="-fx-font-family: &quot;FontAwesome&quot;;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_RIGHT" spacing="20.0" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <children>
+                        <JFXTextField fx:id="namaDepanTextField" labelFloat="true" prefHeight="25.0" prefWidth="187.0" promptText="*Nama Depan" />
+                        <FontAwesomeIconView fx:id="nd-check" fill="#63e869" glyphName="CHECK_CIRCLE" size="20" style="-fx-font-family: &quot;FontAwesome&quot;;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_LEFT" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <JFXTextField fx:id="namaBelakangTextField" labelFloat="true" prefHeight="25.0" prefWidth="178.0" promptText="*Nama Belakang" />
+                        <FontAwesomeIconView fx:id="nb-check" fill="#63e869" glyphName="CHECK_CIRCLE" size="20" style="-fx-font-family: &quot;FontAwesome&quot;;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_RIGHT" spacing="20.0" GridPane.rowIndex="3">
+                     <children>
+                        <JFXComboBox fx:id="negaraComboBox" labelFloat="true" prefHeight="25.0" prefWidth="187.0" promptText="*Negara" />
+                        <FontAwesomeIconView fx:id="negara-check" fill="#63e869" glyphName="CHECK_CIRCLE" size="20" style="-fx-font-family: &quot;FontAwesome&quot;;" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="5.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                     <children>
+                        <FontAwesomeIconView fill="#ff1616" glyphName="EXCLAMATION_TRIANGLE" size="18" style="-fx-font-family: &quot;FontAwesome&quot;;" />
+                        <Label text="Kolom dengan tanda bintang ( * ) wajib diisi !" textFill="#ff1616" style="-fx-font-family: &quot;Roboto Bold&quot;;" />
+                     </children>
+                  </HBox>
+                    </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+                </GridPane>
+            </center>
+        </BorderPane>
+    </children>
+</VBox>

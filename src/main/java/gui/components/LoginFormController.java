@@ -8,6 +8,7 @@ import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import model.Chosen;
 
 import javax.annotation.PostConstruct;
 import javax.swing.text.View;
@@ -27,10 +28,13 @@ public class LoginFormController {
         sideList.getSelectionModel().clearSelection();
     }
     @FXML
-    public void goToSignUp(){
+    private void goToSignUp(){
         //TODO
+        Chosen.setViewFlowContext(context);
+        Chosen.goTo(SignUpFormController.class);
     }
-    public void login(){
+    @FXML
+    private void login(){
         //TODO
     }
 }

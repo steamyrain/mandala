@@ -2,10 +2,7 @@ package gui.sidemenu;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXListView;
-import gui.components.BukuTamuController;
-import gui.components.HomeController;
-import gui.components.LoginController;
-import gui.components.LoginFormController;
+import gui.components.*;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.ViewNode;
 import io.datafx.controller.flow.Flow;
@@ -61,17 +58,20 @@ public class SideMenuController {
         Label daftar = Creator.createLabel("Daftar");
         Label profile = Creator.createLabel("Home");
         Label login = Creator.createLabel("Login");
+        Label signUp = Creator.createLabel("Sign Up");
         //Label loginForm = Creator.createLabel("Login Form");
         context.register("Daftar",daftar);
         context.register("Profile",profile);
         context.register("Login",login);
         context.register("SideList",sideList);
-
-        sideList.getItems().addAll(login,daftar);
+        context.register("SignUp",signUp);
+        sideList.getItems().addAll(login,signUp);
 
         bindNodeToController(login, LoginController.class,contentFlow);
         bindNodeToController(daftar, BukuTamuController.class,contentFlow);
         bindNodeToController(profile, HomeController.class,contentFlow);
+        bindNodeToController(signUp, SignUpFormController.class,contentFlow);
+        bindNodeToController(SignUpFormController.class,contentFlow);
         //bindNodeToController(loginForm,LoginFormController.class,contentFlow);
         bindNodeToController(LoginFormController.class,contentFlow);
         bindNodeToController(HomeController.class,contentFlow);

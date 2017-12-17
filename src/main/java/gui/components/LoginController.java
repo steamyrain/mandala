@@ -30,19 +30,19 @@ public class LoginController {
 
     }
     @FXML
-    public void LoginPublic(){
+    private void LoginPublic(){
         //TODO
         Chosen.setViewFlowContext(context);
         Chosen.goTo(LoginFormController.class);
     }
     @FXML
-    public void LoginResearcher(){
+    private void LoginResearcher(){
         //TODO
         Chosen.setViewFlowContext(context);
         Chosen.goTo(LoginFormController.class);
     }
     @FXML
-    public void LoginAdmin(){
+    private void LoginAdmin(){
         //TODO
         Chosen.setViewFlowContext(context);
         Chosen.goTo(LoginFormController.class);
