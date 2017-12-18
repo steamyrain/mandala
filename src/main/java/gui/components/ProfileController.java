@@ -81,36 +81,30 @@ public class ProfileController {
         currAcc.namaDepanProperty().bind(namaBelakangTextField.textProperty());
         negara.getItems().addAll(DBHandler.fetchCountries());
         FXUtil.autoCompleteComboBoxPlus(negara, (typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
-        if (currAcc.getCountryID() != null) negara.getSelectionModel().select(currAcc.getCountryID().intValue());
+        if (currAcc.getCountryID() != null) negara.getSelectionModel().select(currAcc.getCountryID()-1);
     }
     @FXML
     private void save(){
-        /*String error = DBHandler.update(currAcc,buffAccount);
+        String error = DBHandler.update(currAcc,buffAccount);
         if (error != null) {
             System.out.println("Error: " + error);
         } else {
             Chosen.setAccount(currAcc);
-        }*/
+        }
     }
     @FXML
     private void reset(){
-        /*if(buffAccount.getNoTelp()!=null)noTelpTextField.setText(buffAccount.getNoTelp());
-        else noTelpTextField.setText("");
-        if(buffAccount.getEmail()!=null)emailTextField.setText(buffAccount.getEmail());
-        else emailTextField.setText("");
-        if(buffAccount.getCountryID().intValue()>0)negara.getSelectionModel().select(buffAccount.getCountryID().intValue());
-        else negara.getEditor().setText("");
-        if(buffAccount.getStateID().intValue()>0)provinsi.getSelectionModel().select(buffAccount.getStateID().intValue());
-        else provinsi.getEditor().setText("");
-        if(buffAccount.getCityID().intValue()>0)kota.getSelectionModel().select(buffAccount.getCityID().intValue());
-        else kota.getEditor().setText("");*/
+        //emailTextField.setText(buffAccount.getEmail());
+        /*namaDepanTextField.setText(buffAccount.getNamaDepan());
+        namaBelakangTextField.setText(buffAccount.getNamaBelakang());
+        negara.getSelectionModel().select(buffAccount.getCountryID().intValue());*/
     }
     private void bufferAccount(Account buffer,Account account){
-        /*buffer = Account.createAcc(account);
+        buffer = Account.createAcc(account);
         buffer.emailProperty().bind(account.emailProperty());
-        buffer.noTelpProperty().bind(account.noTelpProperty());
+        System.out.println(buffer.getEmail());
+        buffer.namaDepanProperty().bind(account.namaDepanProperty());
+        buffer.namaBelakangProperty().bind(account.namaBelakangProperty());
         buffer.countryIDProperty().bind(account.countryIDProperty());
-        buffer.stateIDProperty().bind(account.stateIDProperty());
-        buffer.cityIDProperty().bind(account.cityIDProperty());*/
     }
 }

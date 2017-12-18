@@ -22,7 +22,7 @@
         Sign Out
         <graphic>
             <StackPane styleClass="custom-jfx-list-view-icon-container">
-                <FontAwesomeIconView glyphName="REPLY" size="1.5em"
+                <FontAwesomeIconView glyphName="SIGN_OUT" size="1.5em"
                                      styleClass="option-jfx-list-view-icon"/>
             </StackPane>
         </graphic>

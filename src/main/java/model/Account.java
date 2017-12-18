@@ -29,29 +29,16 @@ public class Account implements Disposable{
         Account account = new Account();
         return account;
     }
-    /*public static Account createAcc(Account acc){
+    public static Account createAcc(Account acc){
         Account account = new Account();
         account.setNamaDepan(acc.getNamaDepan());
         account.setNamaBelakang(acc.getNamaBelakang());
         account.setEmail(acc.getEmail());
-        account.setNoTelp(acc.getNoTelp());
         account.setCountryID(acc.getCountryID());
-        account.setStateID(acc.getStateID());
-        account.setCityID(acc.getCityID());
+        account.setUserType(acc.getUserType());
         return account;
-    }*/
-    /*public static Account createAcc(AccountRecord record){
-        Account account = new Account();
-        account.setNamaDepan(record.getNamaDepan());
-        account.setNamaBelakang(record.getNamaBelakang());
-        account.setUserType((UserType)DBHandler.deserialize(record.getUserType()));
-        account.setEmail(record.getEmail());
-        account.setNoTelp(record.getEmail());
-        account.setCountryID(record.getCountryId());
-        account.setStateID(record.getStateId());
-        account.setCityID(record.getCityId());
-        return account;
-    }*/
+    }
+
     public static Account createAcc(UsersRecord usersRecord, RolesRecord rolesRecord){
         Account account = new Account();
         account.setNamaDepan(usersRecord.getFirstname());

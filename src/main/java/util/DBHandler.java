@@ -56,6 +56,7 @@ public class DBHandler {
             exec = DBHandler.getExecutor();
             LoginsRecord resultLogins = exec.selectFrom(Tables.LOGINS).where(Tables.LOGINS.EMAIL.eq(email)).fetchAny();
             if (resultLogins == null) {
+                exec.close();
                 return "User not found";
             }
             else{
@@ -65,7 +66,12 @@ public class DBHandler {
                 fetchHash = resultLogins.getValue(Tables.LOGINS.PASSWORDHASH);
                 if(!check.checkPassword(fetchSalt+password,fetchHash)){
                     System.out.println(check.checkPassword(fetchSalt+password,fetchHash));
+                    exec.close();
                     return "Password Do Not Match";
+                }
+                if(resultRoles.getValue(Tables.ROLES.STATUS).equals("PENDING")){
+                    exec.close();
+                    return "Registeration Status Pending, Please Confirm Your Registeration To Nearest Admin!";
                 }
                 if(resultUsers!=null&&resultRoles!=null)loggedAcc = Account.createAcc(resultUsers,resultRoles);
                 if(loggedAcc!=null)Chosen.setAccount(loggedAcc);
@@ -198,6 +204,7 @@ public class DBHandler {
         }
         catch (Exception e){
             e.printStackTrace();
+            exec.close();
             return "error in pushing data";
         }
         finally{
@@ -225,23 +232,34 @@ public class DBHandler {
         return null;
     }
 
-    /*public static String update(Account account,Account oldAcc) {
+    public static String update(Account account,Account oldAcc) {
         DSLContext exec = getExecutor();
+        Record1<?> email = null;
         try {
-            exec.update(Tables.ACCOUNT)
-                    .set(Tables.ACCOUNT.EMAIL, account.getEmail())
-                    .set(Tables.ACCOUNT.PHONENUMBER, account.getNoTelp())
-                    .set(Tables.ACCOUNT.COUNTRY_ID, account.getCountryID())
-                    .set(Tables.ACCOUNT.STATE_ID, account.getStateID())
-                    .set(Tables.ACCOUNT.CITY_ID, account.getCityID())
-                    .where(Tables.ACCOUNT.EMAIL.equal(oldAcc.getEmail()))
-                    .executeAsync();
+            email = exec.select(Tables.USERS.EMAIL)
+                    .from(Tables.USERS)
+                    .where(Tables.USERS.EMAIL.eq(account.getEmail()))
+                    .fetchOne();
+            if(email != null) {
+                exec.update(Tables.USERS)
+                        .set(Tables.USERS.EMAIL, account.getEmail())
+                        .set(Tables.USERS.FIRSTNAME, account.getNamaDepan())
+                        .set(Tables.USERS.LASTNAME, account.getNamaBelakang())
+                        .set(Tables.USERS.COUNTRYID, account.getCountryID()+1)
+                        .where(Tables.USERS.EMAIL.equal(oldAcc.getEmail()))
+                        .executeAsync();
+            }
+            else{
+                exec.close();
+                return "E-mail telah terdaftar";
+            }
         } catch (Exception e) {
             e.printStackTrace();
+            exec.close();
             return "error in updating data";
         } finally {
             exec.close();
         }
         return null;
-    }*/
+    }
 }
