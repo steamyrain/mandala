@@ -86,7 +86,9 @@ public class Account implements Disposable{
     public void setCityID(Integer cityID){ this.cityID.set(cityID); }
     public Integer getCityID(){ return this.cityID.get(); }
     public void setUserType(String userType){this.userType.set(userType);}
-    public StringProperty getUserType(){ return this.userType; }
+    public String getUserType(){return this.userType.get();}
+    public StringProperty passwordProperty(){return this.password;}
+    public StringProperty userTypeProperty(){ return this.userType; }
     public StringProperty namaDepanProperty() {
         return namaDepan;
     }

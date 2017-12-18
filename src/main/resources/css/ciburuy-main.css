@@ -102,6 +102,9 @@
     -fx-background-color: WHITE;
     -fx-pref-width: 151.0px;
 }
+.jfx-popup-container .jfx-list-view .label{
+
+}
 
 .popup-list-view {
     -fx-pref-width: 150.0px;
@@ -112,7 +115,7 @@
 }
 
 .jfx-snackbar-toast {
-    -fx-text-fill: WHITE;
+    -fx-text-fill: Black;
 }
 
 .jfx-snackbar-action {
@@ -224,6 +227,7 @@
 }
 
 .option-list-view {
+    -fx-font-family: "Roboto ";
     -fx-background-insets: 0.0;
     -jfx-cell-horizontal-margin: 0.0;
     -jfx-cell-vertical-margin: 5.0;
@@ -234,7 +238,7 @@
 
 .option-jfx-list-view-icon {
     -fx-font-family: "FontAwesome";
-    -fx-fill: WHITE;
+    -fx-fill: BLACK;
     -fx-padding: 0.0 10.0 0.0 5.0;
     -fx-cursor: hand;
 }

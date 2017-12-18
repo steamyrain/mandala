@@ -191,7 +191,7 @@ public class DBHandler {
             exec.insertInto(Tables.ROLES,
                     Tables.ROLES.USERID,Tables.ROLES.ROLE,Tables.ROLES.STATUS)
                     .values(exec.select(Tables.USERS.ID).from(Tables.USERS).where(Tables.USERS.EMAIL.eq(account.getEmail()))
-                            ,account.getUserType().toString()
+                            ,account.getUserType()
                             ,"ACTIVE")
                     .executeAsync();
             }
@@ -205,35 +205,27 @@ public class DBHandler {
         }
         return null;
     }
-    /*public static String signupCheck(Account account) {
+    public static String signupCheck(Account account) {
         DSLContext exec = null;
-        Result<AccountRecord> result = null;
+        Record1<String> res = null;
         try {
             exec = DBHandler.getExecutor();
-            result = exec
-                    .selectFrom(Tables.ACCOUNT)
-                    .where(Tables.ACCOUNT.NAMA_DEPAN.equal(account.getNamaDepan()).and(Tables.ACCOUNT.NAMA_BELAKANG.equal(account.getNamaBelakang())))
-                    .fetch();
+            res = exec
+                    .select(Tables.USERS.EMAIL).from(Tables.USERS)
+                    .where(Tables.USERS.EMAIL.equal(account.getEmail()))
+                    .fetchAny();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (exec != null) exec.close();
         }
-        int i = 0;
-        for (AccountRecord accountRecord : result) {
-            System.out.println(accountRecord.get(0));
-            i++;
+        if (res!=null) {
+            return "E-mail telah terdaftar";
         }
-
-        if (i > 0) {
-            System.out.println("Same username/email with: " + i + " account");
-            return "Account already exists";
-        }
-
         return null;
     }
 
-    public static String update(Account account,Account oldAcc) {
+    /*public static String update(Account account,Account oldAcc) {
         DSLContext exec = getExecutor();
         try {
             exec.update(Tables.ACCOUNT)

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.image.ImageView?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.geometry.Insets?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="419.0" minWidth="10.0" prefWidth="321.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="605.0" minWidth="10.0" prefWidth="321.0" />
@@ -27,8 +28,8 @@
     <children>
         <VBox alignment="CENTER" prefHeight="153.0" prefWidth="599.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowSpan="2">
             <children>
-                <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" text="Username" />
-                <ImageView fx:id="profileImageView" fitHeight="128.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.rowSpan="2">
+                <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="username-label" text="Username" />
+                <ImageView fx:id="profileImageView" fitHeight="128.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" styleClass="profile-picture" GridPane.columnSpan="2" GridPane.rowSpan="2">
                <image>
                   <Image url="/icons/User_96px.png" />
                </image></ImageView>
@@ -38,18 +39,6 @@
             <children>
                 <Label prefHeight="17.0" prefWidth="54.0" text="Negara:" />
                 <JFXComboBox fx:id="negara" prefHeight="25.0" prefWidth="96.0" promptText="Negara" GridPane.rowIndex="4" />
-                <Label layoutX="106.0" layoutY="35.0" prefHeight="17.0" prefWidth="49.0" text="Provinsi:">
-                    <HBox.margin>
-                        <Insets left="30.0" />
-                    </HBox.margin>
-                </Label>
-                <JFXComboBox fx:id="provinsi" layoutX="158.0" layoutY="31.0" prefHeight="25.0" prefWidth="97.0" promptText="Provinsi" />
-            <Label prefHeight="17.0" prefWidth="49.0" text="Kota:">
-               <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin>
-            </Label>
-            <JFXComboBox fx:id="kota" prefHeight="25.0" prefWidth="97.0" promptText="Kota" />
             </children>
             <GridPane.margin>
                 <Insets />
@@ -59,25 +48,26 @@
          <children>
               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                   <children>
-                      <JFXButton fx:id="saveButton" onAction="#save" prefHeight="65.0" prefWidth="78.0" text="Ubah" />
+                      <JFXButton fx:id="saveButton" onAction="#save" prefHeight="65.0" prefWidth="78.0" ripplerFill="#3463af" style="-fx-background-color: #4286f4;" styleClass="savechanges-profile-button" text="Ubah" />
                   </children>
               </HBox>
          </children></HBox>
       <HBox alignment="CENTER" spacing="30.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
          <children>
-              <JFXTextField editable="true" fx:id="emailTextField" labelFloat="true" maxWidth="291.0" minWidth="135.0" prefHeight="25.0" prefWidth="139.0" promptText="Email" GridPane.rowIndex="3">
+              <JFXTextField fx:id="emailTextField" editable="true" labelFloat="true" maxWidth="291.0" minWidth="135.0" prefHeight="25.0" prefWidth="139.0" promptText="Email" GridPane.rowIndex="3">
                   <GridPane.margin>
                       <Insets />
                   </GridPane.margin>
               </JFXTextField>
-            <JFXTextField editable="true" fx:id="noTelpTextField" labelFloat="true" maxWidth="291.0" minWidth="135.0" prefWidth="139.0" promptText="Nomor Telefon" />
+            <JFXTextField fx:id="namaDepanTextField" promptText="Nama Depan" />
+            <JFXTextField fx:id="namaBelakangTextField" promptText="Nama Belakang" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <JFXButton fx:id="resetButton" onAction="#reset" prefHeight="65.0" prefWidth="78.0" text="Batal" />
+                  <JFXButton fx:id="resetButton" onAction="#reset" prefHeight="65.0" prefWidth="78.0" style="-fx-background-color: FF1616;" styleClass="resetchanges-profile-button" text="Batal" />
                </children>
             </HBox>
          </children>

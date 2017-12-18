@@ -8,12 +8,10 @@ import io.datafx.controller.ViewNode;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.FlowHandler;
-import io.datafx.controller.flow.action.ActionTrigger;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import io.datafx.controller.util.VetoException;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import util.Creator;
@@ -56,7 +54,7 @@ public class SideMenuController {
         });
 
         Label daftar = Creator.createLabel("Daftar");
-        Label profile = Creator.createLabel("Home");
+        Label profile = Creator.createLabel("Profile");
         Label login = Creator.createLabel("Login");
         Label signUp = Creator.createLabel("Sign Up");
         //Label loginForm = Creator.createLabel("Login Form");
@@ -69,12 +67,13 @@ public class SideMenuController {
 
         bindNodeToController(login, LoginController.class,contentFlow);
         bindNodeToController(daftar, BukuTamuController.class,contentFlow);
-        bindNodeToController(profile, HomeController.class,contentFlow);
+        bindNodeToController(profile, ProfileController.class,contentFlow);
         bindNodeToController(signUp, SignUpFormController.class,contentFlow);
         bindNodeToController(SignUpFormController.class,contentFlow);
         //bindNodeToController(loginForm,LoginFormController.class,contentFlow);
         bindNodeToController(LoginFormController.class,contentFlow);
-        bindNodeToController(HomeController.class,contentFlow);
+        bindNodeToController(LoginController.class,contentFlow);
+        bindNodeToController(ProfileController.class,contentFlow);
     }
 
     private void bindNodeToController(Node node, Class controllerClass, Flow flow) {

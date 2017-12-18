@@ -79,7 +79,7 @@ public class BukuTamuController {
                     System.out.println("Submit Succeded");
                     Chosen.setViewFlowContext(context);
                     Chosen.setAccount(newAccount);
-                    Chosen.goTo(HomeController.class);
+                    Chosen.goTo(ProfileController.class);
                 }
             }
             else{

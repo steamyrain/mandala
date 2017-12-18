@@ -7,12 +7,11 @@ import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import model.Chosen;
 import task.LoginService;
 
 import javax.annotation.PostConstruct;
-import javax.swing.text.View;
 
 @ViewController(value = "/gui/components/LoginForm.fxml")
 public class LoginFormController {
@@ -58,7 +57,7 @@ public class LoginFormController {
             if (error == null) {
                 System.out.println("Login success");
                 //TODO HOME
-                Chosen.goTo(HomeController.class);
+                Chosen.goTo(ProfileController.class);
                 //TODO add LOGOUT
             } else {
                 System.out.println("Login error: " + error);

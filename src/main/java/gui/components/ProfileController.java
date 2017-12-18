@@ -9,6 +9,8 @@ import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import model.Account;
 import model.Chosen;
 import util.DBHandler;
@@ -16,54 +18,70 @@ import util.FXUtil;
 
 import javax.annotation.PostConstruct;
 
-@ViewController(value="/gui/components/Home.fxml")
-public class HomeController {
+@ViewController(value= "/gui/components/Profile.fxml")
+public class ProfileController {
     @FXML
     private Label usernameLabel;
+
     @FXML
-    private JFXComboBox negara;
+    private ImageView profileImageView;
+
     @FXML
-    private JFXComboBox provinsi;
-    @FXML
-    private JFXComboBox kota;
-    @FXML
-    private JFXTextField emailTextField;
-    @FXML
-    private JFXTextField noTelpTextField;
-    @FXMLViewFlowContext
-    private ViewFlowContext context;
+    private JFXComboBox<String> negara;
+
     @FXML
     private JFXButton saveButton;
+
+    @FXML
+    private JFXTextField emailTextField;
+
+    @FXML
+    private JFXTextField namaDepanTextField;
+
+    @FXML
+    private JFXTextField namaBelakangTextField;
+
     @FXML
     private JFXButton resetButton;
+    @FXMLViewFlowContext
+    private ViewFlowContext context;
 
     private Account buffAccount;
     private Account currAcc;
+    private StackPane optionsBurger;
     @PostConstruct
-    private void init(){
-        bufferAccount(buffAccount,Chosen.getAccount());
-        currAcc = Chosen.getAccount();
+    public void init() {
+        initRightToolbar();
+        initSideBar();
+        initComponents();
+    }
+    private void initSideBar(){
         JFXListView sideList = (JFXListView) context.getRegisteredObject("SideList");
-        Label home = (Label) context.getRegisteredObject("Home");
-        Label bukuTamu = (Label) context.getRegisteredObject("BukuTamu");
-        if(sideList.getItems().contains(bukuTamu)) {
+        Label profile = (Label) context.getRegisteredObject("Profile");
+        Label login = (Label) context.getRegisteredObject("Login");
+        if (sideList.getItems().contains(login)) {
             sideList.getItems().clear();
-            sideList.getItems().add(home);
+            sideList.getItems().add(profile);
         }
-        usernameLabel.setText(currAcc.getNamaDepan()+" "+currAcc.getNamaBelakang());
+    }
+    private void initRightToolbar(){
+
+        optionsBurger = (StackPane) context.getRegisteredObject("OptionsBurger");
+        optionsBurger.setVisible(true);
+    }
+    private void initComponents(){
+        bufferAccount(buffAccount, Chosen.getAccount());
+        currAcc = Chosen.getAccount();
+        usernameLabel.setText(currAcc.getNamaDepan() + " " + currAcc.getNamaBelakang());
         emailTextField.setText(currAcc.getEmail());
         currAcc.emailProperty().bind(emailTextField.textProperty());
-        noTelpTextField.setText(currAcc.getNoTelp());
-        currAcc.noTelpProperty().bind(noTelpTextField.textProperty());
-        //negara.getItems().addAll(DBHandler.fetchCountries());
-        FXUtil.autoCompleteComboBoxPlus(negara,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
-        if(currAcc.getCountryID()!= null)negara.getSelectionModel().select(currAcc.getCountryID().intValue());
-        //provinsi.getItems().addAll(DBHandler.fetchStates());
-        FXUtil.autoCompleteComboBoxPlus(provinsi,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
-        if(currAcc.getStateID()!= null)provinsi.getSelectionModel().select(currAcc.getStateID().intValue());
-        //kota.getItems().addAll(DBHandler.fetchCities());
-        FXUtil.autoCompleteComboBoxPlus(kota,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
-        if(currAcc.getCityID()!= null)kota.getSelectionModel().select(currAcc.getCityID().intValue());
+        namaDepanTextField.setText(currAcc.getNamaDepan());
+        currAcc.namaDepanProperty().bind(namaDepanTextField.textProperty());
+        namaBelakangTextField.setText(currAcc.getNamaBelakang());
+        currAcc.namaDepanProperty().bind(namaBelakangTextField.textProperty());
+        negara.getItems().addAll(DBHandler.fetchCountries());
+        FXUtil.autoCompleteComboBoxPlus(negara, (typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
+        if (currAcc.getCountryID() != null) negara.getSelectionModel().select(currAcc.getCountryID().intValue());
     }
     @FXML
     private void save(){

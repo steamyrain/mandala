@@ -7,6 +7,7 @@ import io.datafx.controller.flow.action.ActionTrigger;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.fxml.FXML;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import model.Chosen;
 
@@ -25,9 +26,11 @@ public class LoginController {
     private VBox admloginVBox;
     @FXMLViewFlowContext
     private ViewFlowContext context;
+    private StackPane optionsBurger;
     @PostConstruct
     public void init(){
-
+        optionsBurger = (StackPane)context.getRegisteredObject("OptionsBurger");
+        optionsBurger.setVisible(false);
     }
     @FXML
     private void LoginPublic(){

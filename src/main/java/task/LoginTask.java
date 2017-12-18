@@ -21,14 +21,14 @@ public class LoginTask extends Task<String> {
         updateMessage("Checking username if empty...");
         if (Validator.isEmpty(email)) {
             updateProgress(100,max);
-            return "Input username";
+            return "Input Email";
         }
         updateProgress(10,max);
 
         updateMessage("Checking password if empty...");
         if (Validator.isEmpty(password)) {
             updateProgress(100,max);
-            return "Input password";
+            return "Input Password";
         }
         updateProgress(20,max);
 
@@ -37,7 +37,6 @@ public class LoginTask extends Task<String> {
         if (error != null) {
             return error;
         }
-
         updateProgress(100,max);
         //return null if no error
         return null;
