@@ -247,7 +247,7 @@
  .login-vbox .res-login-vbox,
  .login-vbox .adm-login-vbox{
     -fx-background-color: #ffb200;
-    -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0);
+    -fx-effect:  dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 4);
  }
 
  .login-vbox .label{
@@ -284,8 +284,12 @@
     -fx-font-family: "Roboto Bold";
     -fx-font-size: 18px;
   }
-  .signUp-form-border-pane .jfx-combo-box{
+  .signUp-form-border-pane .jfx-combo-box .label{
+    -fx-text-fill: WHITE;
    }
+   .signUp-form-border-pane .jfx-combo-box:focused .label{
+       -fx-text-fill: WHITE;
+  }
  /*******************************************************************************
   *                                                                             *
   * LOGIN FORM FXML                                                             *
