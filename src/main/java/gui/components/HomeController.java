@@ -76,7 +76,7 @@ public class HomeController {
     }
     @FXML
     private void reset(){
-        if(buffAccount.getNoTelp()!=null)noTelpTextField.setText(buffAccount.getNoTelp());
+        /*if(buffAccount.getNoTelp()!=null)noTelpTextField.setText(buffAccount.getNoTelp());
         else noTelpTextField.setText("");
         if(buffAccount.getEmail()!=null)emailTextField.setText(buffAccount.getEmail());
         else emailTextField.setText("");
@@ -85,14 +85,14 @@ public class HomeController {
         if(buffAccount.getStateID().intValue()>0)provinsi.getSelectionModel().select(buffAccount.getStateID().intValue());
         else provinsi.getEditor().setText("");
         if(buffAccount.getCityID().intValue()>0)kota.getSelectionModel().select(buffAccount.getCityID().intValue());
-        else kota.getEditor().setText("");
+        else kota.getEditor().setText("");*/
     }
     private void bufferAccount(Account buffer,Account account){
-        buffer = Account.createAcc(account);
+        /*buffer = Account.createAcc(account);
         buffer.emailProperty().bind(account.emailProperty());
         buffer.noTelpProperty().bind(account.noTelpProperty());
         buffer.countryIDProperty().bind(account.countryIDProperty());
         buffer.stateIDProperty().bind(account.stateIDProperty());
-        buffer.cityIDProperty().bind(account.cityIDProperty());
+        buffer.cityIDProperty().bind(account.cityIDProperty());*/
     }
 }

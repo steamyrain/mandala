@@ -21,7 +21,7 @@
         </Label>
         <HBox alignment="CENTER" prefHeight="67.0" prefWidth="559.0" spacing="20.0">
             <children>
-                <JFXTextField fx:id="usernameTextField" focusColor="BLACK" labelFloat="true" promptText="Username" unFocusColor="WHITE" />
+                <JFXTextField fx:id="emailTextField" focusColor="BLACK" labelFloat="true" promptText="Email" unFocusColor="WHITE" />
                 <JFXPasswordField fx:id="passwordTextField" focusColor="BLACK" labelFloat="true" promptText="Password" unFocusColor="WHITE" />
             </children>
         </HBox>

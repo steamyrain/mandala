@@ -2,9 +2,16 @@ package util;
 
 import database.generated.Tables;
 //import database.generated.tables.records.AccountRecord;
+import database.generated.tables.Users;
+import database.generated.tables.records.LoginsRecord;
+import database.generated.tables.records.RolesRecord;
+import database.generated.tables.records.UsersRecord;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Account;
+import model.Chosen;
+import org.jasypt.salt.RandomSaltGenerator;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.jooq.*;
 import org.jooq.impl.DSL;
 
@@ -37,7 +44,88 @@ public class DBHandler {
         DSLContext exec = DSL.using(connection, SQLDialect.SQLITE);
         return exec;
     }
-    /*public static ObservableList<String> fetchCountries(){
+    public static String login(String email, String password) {
+        DSLContext exec = null;
+        String fetchSalt = null;
+        String fetchHash= null;
+        StrongPasswordEncryptor check = new StrongPasswordEncryptor();
+        UsersRecord resultUsers = null;
+        RolesRecord resultRoles = null;
+        Account loggedAcc=null;
+        try {
+            exec = DBHandler.getExecutor();
+            LoginsRecord resultLogins = exec.selectFrom(Tables.LOGINS).where(Tables.LOGINS.EMAIL.eq(email)).fetchAny();
+            if (resultLogins == null) {
+                return "User not found";
+            }
+            else{
+                resultUsers = exec.selectFrom(Tables.USERS).where(Tables.USERS.EMAIL.eq(email)).fetchAny();
+                resultRoles = exec.selectFrom(Tables.ROLES).where(Tables.ROLES.USERID.eq(resultUsers.getValue(Tables.USERS.ID))).fetchAny();
+                fetchSalt = resultLogins.getValue(Tables.LOGINS.PASSWORDSALT);
+                fetchHash = resultLogins.getValue(Tables.LOGINS.PASSWORDHASH);
+                if(!check.checkPassword(fetchSalt+password,fetchHash)){
+                    System.out.println(check.checkPassword(fetchSalt+password,fetchHash));
+                    return "Password Do Not Match";
+                }
+                if(resultUsers!=null&&resultRoles!=null)loggedAcc = Account.createAcc(resultUsers,resultRoles);
+                if(loggedAcc!=null)Chosen.setAccount(loggedAcc);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error in logging in";
+        } finally {
+            if (exec != null) exec.close();
+        }
+
+        return null;
+    }
+    public static byte[] serialize(Serializable object) {
+        ByteArrayOutputStream baos;
+        ObjectOutputStream oos;
+
+        try {
+            baos = new ByteArrayOutputStream();
+            oos = new ObjectOutputStream(baos);
+            oos.writeObject(object);
+            oos.close();
+
+            return baos.toByteArray();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static Object deserialize(Object object) {
+        if (object == null) return null;
+
+        return deserialize((byte[]) object);
+    }
+
+    public static Object deserialize(byte[] bytes) {
+        if (bytes == null) return null;
+
+        ObjectInputStream ois;
+
+        try {
+
+            ois = new ObjectInputStream(new ByteArrayInputStream(bytes));
+            Object object = ois.readObject();
+            ois.close();
+
+            return object;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    public static ObservableList<String> fetchCountries(){
         DSLContext exec = null;
         Result<?> result = null;
         try{
@@ -52,7 +140,7 @@ public class DBHandler {
         }
         return FXCollections.observableArrayList(result.getValues(Tables.COUNTRIES.NAME));
     }
-    public static ObservableList<String> fetchStates(){
+    /*public static ObservableList<String> fetchStates(){
         DSLContext exec = null;
         Result<?> result = null;
         try{
@@ -81,17 +169,32 @@ public class DBHandler {
             else return null;
         }
         return FXCollections.observableArrayList(result.getValues(Tables.CITIES.NAME));
-    }
+    }*/
     public static String pushAcc(Account account){
         DSLContext exec = null;
+        RandomSaltGenerator salt = new RandomSaltGenerator();
+        byte[] newSalt = salt.generateSalt(32);
+        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
         try{
             exec = getExecutor();
-            exec.insertInto(Tables.ACCOUNT,
-                    Tables.ACCOUNT.NAMA_DEPAN, Tables.ACCOUNT.NAMA_BELAKANG,Tables.ACCOUNT.EMAIL,Tables.ACCOUNT.PHONENUMBER
-                    ,Tables.ACCOUNT.COUNTRY_ID, Tables.ACCOUNT.STATE_ID,Tables.ACCOUNT.CITY_ID)
-                    .values(account.getNamaDepan(),account.getNamaBelakang(),account.getEmail(),account.getNoTelp()
-                    ,account.getCountryID()+1,account.getStateID()+1,account.getCityID()+1)
+            exec.insertInto(Tables.USERS,
+                    Tables.USERS.FIRSTNAME, Tables.USERS.LASTNAME,Tables.USERS.EMAIL
+                    ,Tables.USERS.COUNTRYID)
+                    .values(account.getNamaDepan(),account.getNamaBelakang(),account.getEmail()
+                    ,account.getCountryID()+1)
                     .executeAsync();
+            exec.insertInto(Tables.LOGINS,
+                    Tables.LOGINS.EMAIL,Tables.LOGINS.PASSWORDSALT,Tables.LOGINS.PASSWORDHASH)
+                    .values(account.getEmail(),newSalt.toString(),encryptor.encryptPassword(newSalt.toString()+account.getPassword()))
+                    .executeAsync();
+            if(account.getUserType().equals("UMUM")){
+            exec.insertInto(Tables.ROLES,
+                    Tables.ROLES.USERID,Tables.ROLES.ROLE,Tables.ROLES.STATUS)
+                    .values(exec.select(Tables.USERS.ID).from(Tables.USERS).where(Tables.USERS.EMAIL.eq(account.getEmail()))
+                            ,account.getUserType().toString()
+                            ,"ACTIVE")
+                    .executeAsync();
+            }
         }
         catch (Exception e){
             e.printStackTrace();
@@ -102,7 +205,7 @@ public class DBHandler {
         }
         return null;
     }
-    public static String signupCheck(Account account) {
+    /*public static String signupCheck(Account account) {
         DSLContext exec = null;
         Result<AccountRecord> result = null;
         try {
@@ -129,24 +232,7 @@ public class DBHandler {
 
         return null;
     }
-    public static byte[] serialize(Serializable object) {
-        ByteArrayOutputStream baos;
-        ObjectOutputStream oos;
 
-        try {
-            baos = new ByteArrayOutputStream();
-            oos = new ObjectOutputStream(baos);
-            oos.writeObject(object);
-            oos.close();
-
-            return baos.toByteArray();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
     public static String update(Account account,Account oldAcc) {
         DSLContext exec = getExecutor();
         try {
@@ -163,26 +249,6 @@ public class DBHandler {
             return "error in updating data";
         } finally {
             exec.close();
-        }
-        return null;
-    }
-    public static Object deserialize(Object object) {
-        if (object == null) return null;
-        return deserialize((byte[]) object);
-    }
-
-    public static Object deserialize(byte[] bytes) {
-        if (bytes == null) return null;
-        ObjectInputStream ois;
-        try {
-            ois = new ObjectInputStream(new ByteArrayInputStream(bytes));
-            Object object = ois.readObject();
-            ois.close();
-            return object;
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return null;
     }*/

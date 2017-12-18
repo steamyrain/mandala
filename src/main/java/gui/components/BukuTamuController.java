@@ -50,7 +50,7 @@ public class BukuTamuController {
         /*negara.getItems().addAll(DBHandler.fetchCountries());
         provinsi.getItems().addAll(DBHandler.fetchStates());
         kota.getItems().addAll(DBHandler.fetchCities());*/
-        FXUtil.autoCompleteComboBoxPlus(negara,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
+        /*FXUtil.autoCompleteComboBoxPlus(negara,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
         FXUtil.autoCompleteComboBoxPlus(provinsi,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
         FXUtil.autoCompleteComboBoxPlus(kota,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
         newAccount = Account.createAcc();
@@ -63,7 +63,7 @@ public class BukuTamuController {
         newAccount.cityIDProperty().bind(kota.getSelectionModel().selectedIndexProperty());
         Validator.addValidator(namaDepan);
         Validator.addValidator(namaBelakang);
-        JFXScrollPane.smoothScrolling((ScrollPane)scroll.getChildren().get(0));
+        JFXScrollPane.smoothScrolling((ScrollPane)scroll.getChildren().get(0));*/
     }
     @FXML
     private void submit(){
@@ -93,12 +93,12 @@ public class BukuTamuController {
 
     @FXML
     private void reset(){
-        namaDepan.setText(null);
+        /*namaDepan.setText(null);
         namaBelakang.setText(null);
         email.setText(null);
         nomorTelefon.setText(null);
         negara.getEditor().setText(null);
         provinsi.getEditor().setText(null);
-        kota.getEditor().setText(null);
+        kota.getEditor().setText(null);*/
     }
 }

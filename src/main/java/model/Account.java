@@ -1,6 +1,8 @@
 package model;
 
 //import database.generated.tables.records.AccountRecord;
+import database.generated.tables.records.RolesRecord;
+import database.generated.tables.records.UsersRecord;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -11,22 +13,23 @@ public class Account implements Disposable{
     private StringProperty namaDepan = new SimpleStringProperty();
     private StringProperty namaBelakang = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
+    private StringProperty password = new SimpleStringProperty();
     private StringProperty noTelp = new SimpleStringProperty();
     private IntegerProperty countryID = new SimpleIntegerProperty();
     private IntegerProperty stateID = new SimpleIntegerProperty();
     private IntegerProperty cityID = new SimpleIntegerProperty();
-    private UserType userType = UserType.UMUM;
-    public enum UserType{
+    private StringProperty userType = new SimpleStringProperty();
+    /*public enum UserType{
         ADMIN,PENELITI,UMUM
     }
     public static final UserType[] USER_TYPE = {
             UserType.ADMIN,UserType.PENELITI,UserType.PENELITI
-    };
+    };*/
     public static Account createAcc(){
         Account account = new Account();
         return account;
     }
-    public static Account createAcc(Account acc){
+    /*public static Account createAcc(Account acc){
         Account account = new Account();
         account.setNamaDepan(acc.getNamaDepan());
         account.setNamaBelakang(acc.getNamaBelakang());
@@ -36,7 +39,7 @@ public class Account implements Disposable{
         account.setStateID(acc.getStateID());
         account.setCityID(acc.getCityID());
         return account;
-    }
+    }*/
     /*public static Account createAcc(AccountRecord record){
         Account account = new Account();
         account.setNamaDepan(record.getNamaDepan());
@@ -49,7 +52,17 @@ public class Account implements Disposable{
         account.setCityID(record.getCityId());
         return account;
     }*/
-
+    public static Account createAcc(UsersRecord usersRecord, RolesRecord rolesRecord){
+        Account account = new Account();
+        account.setNamaDepan(usersRecord.getFirstname());
+        account.setNamaBelakang(usersRecord.getLastname());
+        account.setUserType(rolesRecord.getRole());
+        account.setEmail(usersRecord.getEmail());
+        account.setCountryID(usersRecord.getCountryid());
+        return account;
+    }
+    public void setPassword(String password){ this.password.set(password);}
+    public String getPassword(){return this.password.get();}
     public void setNamaDepan(String namaDepan){
         this.namaDepan.set(namaDepan);
     }
@@ -72,8 +85,8 @@ public class Account implements Disposable{
     public Integer getStateID(){ return this.stateID.get(); }
     public void setCityID(Integer cityID){ this.cityID.set(cityID); }
     public Integer getCityID(){ return this.cityID.get(); }
-    public void setUserType(UserType userType){this.userType = userType;}
-    public UserType getUserType(){ return this.userType; }
+    public void setUserType(String userType){this.userType.set(userType);}
+    public StringProperty getUserType(){ return this.userType; }
     public StringProperty namaDepanProperty() {
         return namaDepan;
     }
