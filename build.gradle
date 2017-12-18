@@ -18,6 +18,7 @@ dependencies {
     compile 'org.xerial:sqlite-jdbc:3.21.0'
     compile 'org.jooq:jooq:3.10.1'
     compile 'de.jensd:fontawesomefx:8.9'
+    compile group: 'org.jasypt', name: 'jasypt', version: '1.9.2'
 }
 
 

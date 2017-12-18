@@ -4,11 +4,12 @@
 package database.generated;
 
 
-import database.generated.tables.Account;
-import database.generated.tables.Cities;
 import database.generated.tables.Countries;
+import database.generated.tables.Logins;
+import database.generated.tables.Peneliti;
+import database.generated.tables.Roles;
 import database.generated.tables.SqliteSequence;
-import database.generated.tables.States;
+import database.generated.tables.Users;
 
 import javax.annotation.Generated;
 
@@ -27,14 +28,24 @@ import javax.annotation.Generated;
 public class Tables {
 
     /**
-     * The table <code>Account</code>.
+     * The table <code>Logins</code>.
      */
-    public static final Account ACCOUNT = database.generated.tables.Account.ACCOUNT;
+    public static final Logins LOGINS = database.generated.tables.Logins.LOGINS;
 
     /**
-     * The table <code>cities</code>.
+     * The table <code>Peneliti</code>.
      */
-    public static final Cities CITIES = database.generated.tables.Cities.CITIES;
+    public static final Peneliti PENELITI = database.generated.tables.Peneliti.PENELITI;
+
+    /**
+     * The table <code>Roles</code>.
+     */
+    public static final Roles ROLES = database.generated.tables.Roles.ROLES;
+
+    /**
+     * The table <code>Users</code>.
+     */
+    public static final Users USERS = database.generated.tables.Users.USERS;
 
     /**
      * The table <code>countries</code>.
@@ -45,9 +56,4 @@ public class Tables {
      * The table <code>sqlite_sequence</code>.
      */
     public static final SqliteSequence SQLITE_SEQUENCE = database.generated.tables.SqliteSequence.SQLITE_SEQUENCE;
-
-    /**
-     * The table <code>states</code>.
-     */
-    public static final States STATES = database.generated.tables.States.STATES;
 }

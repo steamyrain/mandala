@@ -55,24 +55,24 @@ public class HomeController {
         currAcc.emailProperty().bind(emailTextField.textProperty());
         noTelpTextField.setText(currAcc.getNoTelp());
         currAcc.noTelpProperty().bind(noTelpTextField.textProperty());
-        negara.getItems().addAll(DBHandler.fetchCountries());
+        //negara.getItems().addAll(DBHandler.fetchCountries());
         FXUtil.autoCompleteComboBoxPlus(negara,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
         if(currAcc.getCountryID()!= null)negara.getSelectionModel().select(currAcc.getCountryID().intValue());
-        provinsi.getItems().addAll(DBHandler.fetchStates());
+        //provinsi.getItems().addAll(DBHandler.fetchStates());
         FXUtil.autoCompleteComboBoxPlus(provinsi,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
         if(currAcc.getStateID()!= null)provinsi.getSelectionModel().select(currAcc.getStateID().intValue());
-        kota.getItems().addAll(DBHandler.fetchCities());
+        //kota.getItems().addAll(DBHandler.fetchCities());
         FXUtil.autoCompleteComboBoxPlus(kota,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
         if(currAcc.getCityID()!= null)kota.getSelectionModel().select(currAcc.getCityID().intValue());
     }
     @FXML
     private void save(){
-        String error = DBHandler.update(currAcc,buffAccount);
+        /*String error = DBHandler.update(currAcc,buffAccount);
         if (error != null) {
             System.out.println("Error: " + error);
         } else {
             Chosen.setAccount(currAcc);
-        }
+        }*/
     }
     @FXML
     private void reset(){

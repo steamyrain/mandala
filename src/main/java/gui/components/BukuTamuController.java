@@ -47,9 +47,9 @@ public class BukuTamuController {
     private SignupService signupService = new SignupService();
     @PostConstruct
     public void init() throws Exception{
-        negara.getItems().addAll(DBHandler.fetchCountries());
+        /*negara.getItems().addAll(DBHandler.fetchCountries());
         provinsi.getItems().addAll(DBHandler.fetchStates());
-        kota.getItems().addAll(DBHandler.fetchCities());
+        kota.getItems().addAll(DBHandler.fetchCities());*/
         FXUtil.autoCompleteComboBoxPlus(negara,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
         FXUtil.autoCompleteComboBoxPlus(provinsi,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
         FXUtil.autoCompleteComboBoxPlus(kota,(typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
@@ -67,7 +67,7 @@ public class BukuTamuController {
     }
     @FXML
     private void submit(){
-        if(signupService.isRunning())return;
+        /*if(signupService.isRunning())return;
         signupService.reset();
         signupService.setAccount(newAccount);
         signupService.setOnSucceeded(t -> {
@@ -87,7 +87,7 @@ public class BukuTamuController {
             }
         }
         );
-        signupService.start();
+        signupService.start();*/
         //reset();
     }
 

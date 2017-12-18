@@ -1,7 +1,7 @@
 package util;
 
 import database.generated.Tables;
-import database.generated.tables.records.AccountRecord;
+//import database.generated.tables.records.AccountRecord;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Account;
@@ -16,7 +16,8 @@ import java.util.List;
 import java.util.Observable;
 
 public class DBHandler {
-    private static final String DB_PATH = "databases/TestCiburuy.db";
+    //private static final String DB_PATH = "databases/TestCiburuy.db";
+    private static final String DB_PATH = "databases/testlogin.db";
     private static final String DB_URL = "jdbc:sqlite:"+DB_PATH;
     private static Connection connection;
     private static void connectToDB(){
@@ -36,7 +37,7 @@ public class DBHandler {
         DSLContext exec = DSL.using(connection, SQLDialect.SQLITE);
         return exec;
     }
-    public static ObservableList<String> fetchCountries(){
+    /*public static ObservableList<String> fetchCountries(){
         DSLContext exec = null;
         Result<?> result = null;
         try{
@@ -184,5 +185,5 @@ public class DBHandler {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 }

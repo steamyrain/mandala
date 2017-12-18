@@ -30,11 +30,11 @@ public class SignupTask extends Task<String> {
         updateProgress(25,max);
 
         updateMessage("Checking if account already exists...");
-        String error = DBHandler.signupCheck(account);
-        if (error != null) {
+        //String error = DBHandler.signupCheck(account);
+        /*if (error != null) {
             updateProgress(max,max);
             return error;
-        }
+        }*/
         updateProgress(max,max);
         //returns null if no error
         return null;

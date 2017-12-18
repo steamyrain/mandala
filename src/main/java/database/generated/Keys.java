@@ -4,14 +4,16 @@
 package database.generated;
 
 
-import database.generated.tables.Account;
-import database.generated.tables.Cities;
 import database.generated.tables.Countries;
-import database.generated.tables.States;
-import database.generated.tables.records.AccountRecord;
-import database.generated.tables.records.CitiesRecord;
+import database.generated.tables.Logins;
+import database.generated.tables.Peneliti;
+import database.generated.tables.Roles;
+import database.generated.tables.Users;
 import database.generated.tables.records.CountriesRecord;
-import database.generated.tables.records.StatesRecord;
+import database.generated.tables.records.LoginsRecord;
+import database.generated.tables.records.PenelitiRecord;
+import database.generated.tables.records.RolesRecord;
+import database.generated.tables.records.UsersRecord;
 
 import javax.annotation.Generated;
 
@@ -39,47 +41,47 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
-    public static final Identity<CitiesRecord, Integer> IDENTITY_CITIES = Identities0.IDENTITY_CITIES;
     public static final Identity<CountriesRecord, Integer> IDENTITY_COUNTRIES = Identities0.IDENTITY_COUNTRIES;
-    public static final Identity<StatesRecord, Integer> IDENTITY_STATES = Identities0.IDENTITY_STATES;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<AccountRecord> PK_ACCOUNT = UniqueKeys0.PK_ACCOUNT;
-    public static final UniqueKey<CitiesRecord> PK_CITIES = UniqueKeys0.PK_CITIES;
+    public static final UniqueKey<LoginsRecord> PK_LOGINS = UniqueKeys0.PK_LOGINS;
+    public static final UniqueKey<PenelitiRecord> PK_PENELITI = UniqueKeys0.PK_PENELITI;
+    public static final UniqueKey<RolesRecord> PK_ROLES = UniqueKeys0.PK_ROLES;
+    public static final UniqueKey<UsersRecord> PK_USERS = UniqueKeys0.PK_USERS;
     public static final UniqueKey<CountriesRecord> PK_COUNTRIES = UniqueKeys0.PK_COUNTRIES;
-    public static final UniqueKey<StatesRecord> PK_STATES = UniqueKeys0.PK_STATES;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final ForeignKey<AccountRecord, StatesRecord> FK_ACCOUNT_STATES_1 = ForeignKeys0.FK_ACCOUNT_STATES_1;
-    public static final ForeignKey<AccountRecord, CountriesRecord> FK_ACCOUNT_COUNTRIES_1 = ForeignKeys0.FK_ACCOUNT_COUNTRIES_1;
-    public static final ForeignKey<AccountRecord, CitiesRecord> FK_ACCOUNT_CITIES_1 = ForeignKeys0.FK_ACCOUNT_CITIES_1;
+    public static final ForeignKey<LoginsRecord, UsersRecord> FK_LOGINS_USERS_1 = ForeignKeys0.FK_LOGINS_USERS_1;
+    public static final ForeignKey<PenelitiRecord, RolesRecord> FK_PENELITI_ROLES_1 = ForeignKeys0.FK_PENELITI_ROLES_1;
+    public static final ForeignKey<RolesRecord, UsersRecord> FK_ROLES_USERS_1 = ForeignKeys0.FK_ROLES_USERS_1;
+    public static final ForeignKey<UsersRecord, CountriesRecord> FK_USERS_COUNTRIES_1 = ForeignKeys0.FK_USERS_COUNTRIES_1;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
     private static class Identities0 extends AbstractKeys {
-        public static Identity<CitiesRecord, Integer> IDENTITY_CITIES = createIdentity(Cities.CITIES, Cities.CITIES.ID);
         public static Identity<CountriesRecord, Integer> IDENTITY_COUNTRIES = createIdentity(Countries.COUNTRIES, Countries.COUNTRIES.ID);
-        public static Identity<StatesRecord, Integer> IDENTITY_STATES = createIdentity(States.STATES, States.STATES.ID);
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
-        public static final UniqueKey<AccountRecord> PK_ACCOUNT = createUniqueKey(Account.ACCOUNT, "pk_Account", Account.ACCOUNT.ID);
-        public static final UniqueKey<CitiesRecord> PK_CITIES = createUniqueKey(Cities.CITIES, "pk_cities", Cities.CITIES.ID);
+        public static final UniqueKey<LoginsRecord> PK_LOGINS = createUniqueKey(Logins.LOGINS, "pk_Logins", Logins.LOGINS.ID);
+        public static final UniqueKey<PenelitiRecord> PK_PENELITI = createUniqueKey(Peneliti.PENELITI, "pk_Peneliti", Peneliti.PENELITI.ID);
+        public static final UniqueKey<RolesRecord> PK_ROLES = createUniqueKey(Roles.ROLES, "pk_Roles", Roles.ROLES.ID);
+        public static final UniqueKey<UsersRecord> PK_USERS = createUniqueKey(Users.USERS, "pk_Users", Users.USERS.ID);
         public static final UniqueKey<CountriesRecord> PK_COUNTRIES = createUniqueKey(Countries.COUNTRIES, "pk_countries", Countries.COUNTRIES.ID);
-        public static final UniqueKey<StatesRecord> PK_STATES = createUniqueKey(States.STATES, "pk_states", States.STATES.ID);
     }
 
     private static class ForeignKeys0 extends AbstractKeys {
-        public static final ForeignKey<AccountRecord, StatesRecord> FK_ACCOUNT_STATES_1 = createForeignKey(database.generated.Keys.PK_STATES, Account.ACCOUNT, "fk_Account_states_1", Account.ACCOUNT.STATE_ID);
-        public static final ForeignKey<AccountRecord, CountriesRecord> FK_ACCOUNT_COUNTRIES_1 = createForeignKey(database.generated.Keys.PK_COUNTRIES, Account.ACCOUNT, "fk_Account_countries_1", Account.ACCOUNT.COUNTRY_ID);
-        public static final ForeignKey<AccountRecord, CitiesRecord> FK_ACCOUNT_CITIES_1 = createForeignKey(database.generated.Keys.PK_CITIES, Account.ACCOUNT, "fk_Account_cities_1", Account.ACCOUNT.CITY_ID);
+        public static final ForeignKey<LoginsRecord, UsersRecord> FK_LOGINS_USERS_1 = createForeignKey(database.generated.Keys.PK_USERS, Logins.LOGINS, "fk_Logins_Users_1", Logins.LOGINS.EMAIL);
+        public static final ForeignKey<PenelitiRecord, RolesRecord> FK_PENELITI_ROLES_1 = createForeignKey(database.generated.Keys.PK_ROLES, Peneliti.PENELITI, "fk_Peneliti_Roles_1", Peneliti.PENELITI.ROLEID);
+        public static final ForeignKey<RolesRecord, UsersRecord> FK_ROLES_USERS_1 = createForeignKey(database.generated.Keys.PK_USERS, Roles.ROLES, "fk_Roles_Users_1", Roles.ROLES.USERID);
+        public static final ForeignKey<UsersRecord, CountriesRecord> FK_USERS_COUNTRIES_1 = createForeignKey(database.generated.Keys.PK_COUNTRIES, Users.USERS, "fk_Users_countries_1", Users.USERS.COUNTRYID);
     }
 }

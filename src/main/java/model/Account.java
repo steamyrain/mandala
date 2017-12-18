@@ -1,6 +1,6 @@
 package model;
 
-import database.generated.tables.records.AccountRecord;
+//import database.generated.tables.records.AccountRecord;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -37,7 +37,7 @@ public class Account implements Disposable{
         account.setCityID(acc.getCityID());
         return account;
     }
-    public static Account createAcc(AccountRecord record){
+    /*public static Account createAcc(AccountRecord record){
         Account account = new Account();
         account.setNamaDepan(record.getNamaDepan());
         account.setNamaBelakang(record.getNamaBelakang());
@@ -48,7 +48,8 @@ public class Account implements Disposable{
         account.setStateID(record.getStateId());
         account.setCityID(record.getCityId());
         return account;
-    }
+    }*/
+
     public void setNamaDepan(String namaDepan){
         this.namaDepan.set(namaDepan);
     }
