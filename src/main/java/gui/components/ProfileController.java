@@ -94,7 +94,8 @@ public class ProfileController {
     }
     @FXML
     private void reset(){
-        //emailTextField.setText(buffAccount.getEmail());
+        if(buffAccount.getEmail()!=null)emailTextField.setText(buffAccount.getEmail());
+        else emailTextField.setText("");
         /*namaDepanTextField.setText(buffAccount.getNamaDepan());
         namaBelakangTextField.setText(buffAccount.getNamaBelakang());
         negara.getSelectionModel().select(buffAccount.getCountryID().intValue());*/
