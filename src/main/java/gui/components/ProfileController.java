@@ -51,9 +51,22 @@ public class ProfileController {
     private StackPane optionsBurger;
     @PostConstruct
     public void init() {
+        bufferAccount(buffAccount, Chosen.getAccount());
+        System.out.println(buffAccount.getEmail().toString());
+        currAcc = Chosen.getAccount();
+        usernameLabel.setText(currAcc.getNamaDepan() + " " + currAcc.getNamaBelakang());
+        emailTextField.setText(currAcc.getEmail());
+        currAcc.emailProperty().bind(emailTextField.textProperty());
+        namaDepanTextField.setText(currAcc.getNamaDepan());
+        currAcc.namaDepanProperty().bind(namaDepanTextField.textProperty());
+        namaBelakangTextField.setText(currAcc.getNamaBelakang());
+        currAcc.namaDepanProperty().bind(namaBelakangTextField.textProperty());
+        negara.getItems().addAll(DBHandler.fetchCountries());
+        FXUtil.autoCompleteComboBoxPlus(negara, (typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
+        if (currAcc.getCountryID() != null) negara.getSelectionModel().select(currAcc.getCountryID()-1);
         initRightToolbar();
         initSideBar();
-        initComponents();
+        //initComponents();
     }
     private void initSideBar(){
         JFXListView sideList = (JFXListView) context.getRegisteredObject("SideList");
@@ -103,7 +116,6 @@ public class ProfileController {
     private void bufferAccount(Account buffer,Account account){
         buffer = Account.createAcc(account);
         buffer.emailProperty().bind(account.emailProperty());
-        System.out.println(buffer.getEmail());
         buffer.namaDepanProperty().bind(account.namaDepanProperty());
         buffer.namaBelakangProperty().bind(account.namaBelakangProperty());
         buffer.countryIDProperty().bind(account.countryIDProperty());
