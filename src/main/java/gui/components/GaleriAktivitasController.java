@@ -21,8 +21,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.util.Duration;
 
 import javax.annotation.PostConstruct;
 import javafx.scene.control.ScrollPane;
@@ -31,8 +29,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
-import static javafx.animation.Interpolator.EASE_BOTH;
 
 @ViewController(value="/gui/components/GaleriAktivitas.fxml")
 
@@ -45,7 +41,7 @@ public class GaleriAktivitasController {
     @PostConstruct
     public void init(){
         ArrayList<Node> children = new ArrayList<>();
-        String path = "C:\\Users\\Reinhard\\Downloads\\nice wall m8\\";
+        String path = "D:\\Projects\\galericiburuy\\";
         File folder = new File(path);
         Integer i = 0;
         File[] listOfFiles = folder.listFiles();
@@ -84,72 +80,6 @@ public class GaleriAktivitasController {
         masonry.getChildren().addAll(children);
         Platform.runLater(() -> scrollPane.requestLayout());
         JFXScrollPane.smoothScrolling(scrollPane);
-
-        /*ArrayList<Node> children = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            StackPane child = new StackPane();
-            double width = Math.random() * 100 + 100;
-            child.setMinWidth(width);
-            child.setMaxWidth(width);
-            child.setPrefWidth(width);
-            child.setStyle("-fx-background-color: BLACK;");
-            double height = Math.random() * 100 + 100;
-            child.setMinHeight(height);
-            child.setMaxHeight(height);
-            child.setPrefHeight(height);
-            JFXDepthManager.setDepth(child, 1);
-            children.add(child);
-
-            // create content
-            StackPane header = new StackPane();
-            String headerColor = getDefaultColor(i % 12);
-            header.setStyle("-fx-background-radius: 5 5 0 0; -fx-background-color: " + headerColor);
-            VBox.setVgrow(header, Priority.ALWAYS);
-            StackPane body = new StackPane();
-            body.setMinHeight(Math.random() * 20 + 50);
-            VBox content = new VBox();
-            content.getChildren().addAll(header, body);
-            body.setStyle("-fx-background-radius: 0 0 5 5; -fx-background-color: rgb(255,255,255,0.87);");
-
-
-            // create button
-            JFXButton button = new JFXButton("");
-            button.setButtonType(JFXButton.ButtonType.RAISED);
-            button.setStyle("-fx-background-radius: 40;-fx-background-color: " + getDefaultColor((int) ((Math.random() * 12) % 12)));
-            button.setPrefSize(40, 40);
-            button.setRipplerFill(javafx.scene.paint.Color.valueOf(headerColor));
-            button.setScaleX(0);
-            button.setScaleY(0);
-            SVGGlyph glyph = new SVGGlyph(-1,
-                    "test",
-                    "M1008 6.286q18.857 13.714 15.429 36.571l-146.286 877.714q-2.857 16.571-18.286 25.714-8 4.571-17.714 4.571-6.286 "
-                            + "0-13.714-2.857l-258.857-105.714-138.286 168.571q-10.286 13.143-28 13.143-7.429 "
-                            + "0-12.571-2.286-10.857-4-17.429-13.429t-6.571-20.857v-199.429l493.714-605.143-610.857 "
-                            + "528.571-225.714-92.571q-21.143-8-22.857-31.429-1.143-22.857 18.286-33.714l950.857-548.571q8.571-5.143 18.286-5.143"
-                            + " 11.429 0 20.571 6.286z",
-                    Color.WHITE);
-            glyph.setSize(20, 20);
-            button.setGraphic(glyph);
-            button.translateYProperty().bind(Bindings.createDoubleBinding(() -> {
-                return header.getBoundsInParent().getHeight() - button.getHeight() / 2;
-            }, header.boundsInParentProperty(), button.heightProperty()));
-            StackPane.setMargin(button, new Insets(0, 12, 0, 0));
-            StackPane.setAlignment(button, Pos.TOP_RIGHT);
-
-            Timeline animation = new Timeline(new KeyFrame(Duration.millis(240),
-                    new KeyValue(button.scaleXProperty(),
-                            1,
-                            EASE_BOTH),
-                    new KeyValue(button.scaleYProperty(),
-                            1,
-                            EASE_BOTH)));
-            animation.setDelay(Duration.millis(100 * i + 1000));
-            animation.play();
-            child.getChildren().addAll(content, button);
-        }
-        masonry.getChildren().addAll(children);
-        Platform.runLater(() -> scrollPane.requestLayout());
-        JFXScrollPane.smoothScrolling(scrollPane);*/
     }
     private ImageView createImageView(final File imageFile) {
         // DEFAULT_THUMBNAIL_WIDTH is a constant you need to define

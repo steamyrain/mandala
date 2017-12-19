@@ -33,12 +33,6 @@ public class Main extends Application {
         System.out.println("javafx.version: " + System.getProperty("javafx.version"));
         double width = 800;
         double height = 600;
-        /*try {
-            Rectangle2D bounds = Screen.getScreens().get(0).getBounds();
-            width = bounds.getWidth() / 2.5;
-            height = bounds.getHeight() / 1.35;
-        }catch (Exception e){ }*/
-
         Scene scene = new Scene(decorator, width, height);
         final ObservableList<String> stylesheets = scene.getStylesheets();
         stylesheets.addAll(Main.class.getResource("/css/ciburuy-fonts.css").toExternalForm(),
