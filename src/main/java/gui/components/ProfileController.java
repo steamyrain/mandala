@@ -84,7 +84,8 @@ public class ProfileController {
         }
     }
     private void initRightToolbar(){
-
+        JFXTextField searchBar = (JFXTextField) context.getRegisteredObject("SearchBar");
+        searchBar.setVisible(true);
         optionsBurger = (StackPane) context.getRegisteredObject("OptionsBurger");
         optionsBurger.setVisible(true);
     }

@@ -45,6 +45,8 @@ public final class MainMenuController {
     @FXML
     private JFXHamburger titleBurger;
     @FXML
+    private JFXTextField searchTextField;
+    @FXML
     private JFXDrawer drawer;
 
     private FlowHandler sideBarFlowHandler;;
@@ -82,6 +84,7 @@ public final class MainMenuController {
 
     private void initSideBar() throws FlowException {
         Flow sideBarFlow = new Flow(SideMenuController.class);
+        context.register("SearchBar",searchTextField);
         context.register("SideBarFlow", sideBarFlow);
         context.register("SideBar",drawer);
         context.register("ContentPane",drawer.getContent().get(0));
