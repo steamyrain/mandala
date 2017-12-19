@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="462.0" styleClass="login-credentials-vBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label text="LOGIN">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER" prefHeight="67.0" prefWidth="559.0" spacing="20.0">
+            <children>
+                <JFXTextField fx:id="emailTextField" focusColor="BLACK" labelFloat="true" promptText="Email" unFocusColor="WHITE" />
+                <JFXPasswordField fx:id="passwordTextField" focusColor="BLACK" labelFloat="true" promptText="Password" unFocusColor="WHITE" />
+            </children>
+        </HBox>
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <GridPane prefHeight="65.0" prefWidth="462.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="424.0" minWidth="10.0" prefWidth="292.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="226.0" minWidth="10.0" prefWidth="170.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                    <JFXButton fx:id="loginButton" onAction="#login" prefHeight="40.0" prefWidth="120.0" ripplerFill="#3463af" styleClass="login-jfx-button" text="Login" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+                  <JFXButton fx:id="linkSignUpButton" onAction="#goToSignUp" styleClass="link-signUp-jfx-button" text="&gt;&gt;Belum memiliki akun ?" underline="true" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+    </children>
+    <padding>
+        <Insets top="20.0" />
+    </padding>
+</VBox>

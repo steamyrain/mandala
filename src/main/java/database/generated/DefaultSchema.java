@@ -4,11 +4,12 @@
 package database.generated;
 
 
-import database.generated.tables.Account;
-import database.generated.tables.Cities;
 import database.generated.tables.Countries;
+import database.generated.tables.Logins;
+import database.generated.tables.Peneliti;
+import database.generated.tables.Roles;
 import database.generated.tables.SqliteSequence;
-import database.generated.tables.States;
+import database.generated.tables.Users;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +35,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultSchema extends SchemaImpl {
 
-    private static final long serialVersionUID = 970989684;
+    private static final long serialVersionUID = 497492837;
 
     /**
      * The reference instance of <code></code>
@@ -42,14 +43,24 @@ public class DefaultSchema extends SchemaImpl {
     public static final DefaultSchema DEFAULT_SCHEMA = new DefaultSchema();
 
     /**
-     * The table <code>Account</code>.
+     * The table <code>Logins</code>.
      */
-    public final Account ACCOUNT = database.generated.tables.Account.ACCOUNT;
+    public final Logins LOGINS = database.generated.tables.Logins.LOGINS;
 
     /**
-     * The table <code>cities</code>.
+     * The table <code>Peneliti</code>.
      */
-    public final Cities CITIES = database.generated.tables.Cities.CITIES;
+    public final Peneliti PENELITI = database.generated.tables.Peneliti.PENELITI;
+
+    /**
+     * The table <code>Roles</code>.
+     */
+    public final Roles ROLES = database.generated.tables.Roles.ROLES;
+
+    /**
+     * The table <code>Users</code>.
+     */
+    public final Users USERS = database.generated.tables.Users.USERS;
 
     /**
      * The table <code>countries</code>.
@@ -60,11 +71,6 @@ public class DefaultSchema extends SchemaImpl {
      * The table <code>sqlite_sequence</code>.
      */
     public final SqliteSequence SQLITE_SEQUENCE = database.generated.tables.SqliteSequence.SQLITE_SEQUENCE;
-
-    /**
-     * The table <code>states</code>.
-     */
-    public final States STATES = database.generated.tables.States.STATES;
 
     /**
      * No further instances allowed
@@ -91,10 +97,11 @@ public class DefaultSchema extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            Account.ACCOUNT,
-            Cities.CITIES,
+            Logins.LOGINS,
+            Peneliti.PENELITI,
+            Roles.ROLES,
+            Users.USERS,
             Countries.COUNTRIES,
-            SqliteSequence.SQLITE_SEQUENCE,
-            States.STATES);
+            SqliteSequence.SQLITE_SEQUENCE);
     }
 }

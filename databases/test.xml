@@ -3,7 +3,7 @@
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>org.sqlite.JDBC</driver>
-        <url>jdbc:sqlite:TestCiburuy.db</url>
+        <url>jdbc:sqlite:testlogin.db</url>
         <user></user>
         <password></password>
     </jdbc>
@@ -41,7 +41,7 @@
             <packageName>database.generated</packageName>
 
             <!-- The destination directory of your generated classes. Using Maven directory layout here -->
-            <directory>C:\Users\Reinhard\DataFX-example\src\main\java</directory>
+            <directory>D:\Projects\mandala\src\main\java</directory>
         </target>
     </generator>
 </configuration>

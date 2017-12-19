@@ -1,43 +1,55 @@
 package model;
 
-import database.generated.tables.records.AccountRecord;
+//import database.generated.tables.records.AccountRecord;
+import database.generated.tables.records.RolesRecord;
+import database.generated.tables.records.UsersRecord;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import util.DBHandler;
 
-public class Account {
+public class Account implements Disposable{
     private StringProperty namaDepan = new SimpleStringProperty();
     private StringProperty namaBelakang = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
+    private StringProperty password = new SimpleStringProperty();
     private StringProperty noTelp = new SimpleStringProperty();
     private IntegerProperty countryID = new SimpleIntegerProperty();
     private IntegerProperty stateID = new SimpleIntegerProperty();
     private IntegerProperty cityID = new SimpleIntegerProperty();
-    private UserType userType = UserType.UMUM;
-    public enum UserType{
+    private StringProperty userType = new SimpleStringProperty();
+    /*public enum UserType{
         ADMIN,PENELITI,UMUM
     }
     public static final UserType[] USER_TYPE = {
             UserType.ADMIN,UserType.PENELITI,UserType.PENELITI
-    };
+    };*/
     public static Account createAcc(){
         Account account = new Account();
         return account;
     }
-    public static Account createAcc(AccountRecord record){
+    public static Account createAcc(Account acc){
         Account account = new Account();
-        account.setNamaDepan(record.getNamaDepan());
-        account.setNamaBelakang(record.getNamaBelakang());
-        account.setUserType((UserType)DBHandler.deserialize(record.getUserType()));
-        account.setEmail(record.getEmail());
-        account.setNoTelp(record.getEmail());
-        account.setCountryID(record.getCountryId());
-        account.setStateID(record.getStateId());
-        account.setCityID(record.getCityId());
+        account.setNamaDepan(acc.getNamaDepan());
+        account.setNamaBelakang(acc.getNamaBelakang());
+        account.setEmail(acc.getEmail());
+        account.setCountryID(acc.getCountryID());
+        account.setUserType(acc.getUserType());
         return account;
     }
+
+    public static Account createAcc(UsersRecord usersRecord, RolesRecord rolesRecord){
+        Account account = new Account();
+        account.setNamaDepan(usersRecord.getFirstname());
+        account.setNamaBelakang(usersRecord.getLastname());
+        account.setUserType(rolesRecord.getRole());
+        account.setEmail(usersRecord.getEmail());
+        account.setCountryID(usersRecord.getCountryid()-1);
+        return account;
+    }
+    public void setPassword(String password){ this.password.set(password);}
+    public String getPassword(){return this.password.get();}
     public void setNamaDepan(String namaDepan){
         this.namaDepan.set(namaDepan);
     }
@@ -60,8 +72,10 @@ public class Account {
     public Integer getStateID(){ return this.stateID.get(); }
     public void setCityID(Integer cityID){ this.cityID.set(cityID); }
     public Integer getCityID(){ return this.cityID.get(); }
-    public void setUserType(UserType userType){this.userType = userType;}
-    public UserType getUserType(){ return this.userType; }
+    public void setUserType(String userType){this.userType.set(userType);}
+    public String getUserType(){return this.userType.get();}
+    public StringProperty passwordProperty(){return this.password;}
+    public StringProperty userTypeProperty(){ return this.userType; }
     public StringProperty namaDepanProperty() {
         return namaDepan;
     }
@@ -73,5 +87,8 @@ public class Account {
     public IntegerProperty countryIDProperty(){return countryID;}
     public IntegerProperty stateIDProperty(){return stateID;}
     public IntegerProperty cityIDProperty(){return cityID;}
-
+    @Override
+    public void dispose(){
+        //TODO-dispose
+    }
 }

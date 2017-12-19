@@ -4,8 +4,12 @@
 
 .root {
     -fx-font-family: "Roboto";
+    /*-fx-background-color: derive(#ffb200,-10%);*/
+    -icons-color: WHITE;
 }
-
+.border-pane{
+    -fx-background-color: derive(#ffb200,-10%);
+}
 .side-menu {
     -fx-padding: 20.0, 10.0;
     -fx-font-size: 15.0;
@@ -36,7 +40,7 @@
 }
 
 .jfx-drawer-side-pane {
-    -fx-background-color: WHITE;
+    -fx-background-color: #ffb200;
 }
 
 /*******************************************************************************
@@ -98,6 +102,9 @@
     -fx-background-color: WHITE;
     -fx-pref-width: 151.0px;
 }
+.jfx-popup-container .jfx-list-view .label{
+
+}
 
 .popup-list-view {
     -fx-pref-width: 150.0px;
@@ -108,7 +115,7 @@
 }
 
 .jfx-snackbar-toast {
-    -fx-text-fill: WHITE;
+    -fx-text-fill: Black;
 }
 
 .jfx-snackbar-action {
@@ -220,15 +227,111 @@
 }
 
 .option-list-view {
+    -fx-font-family: "Roboto ";
+    -fx-background-insets: 0.0;
+    -jfx-cell-horizontal-margin: 0.0;
+    -jfx-cell-vertical-margin: 5.0;
+    -jfx-expanded: false;
     -fx-pref-width: 160.0px;
     -fx-background-color: WHITE;
 }
 
 .option-jfx-list-view-icon {
-    -fx-fill: #ffb200;
+    -fx-font-family: "FontAwesome";
+    -fx-fill: BLACK;
     -fx-padding: 0.0 10.0 0.0 5.0;
     -fx-cursor: hand;
 }
+/*******************************************************************************
+ *                                                                             *
+ * LOGIN FXML                                                                  *
+ *                                                                             *
+ ******************************************************************************/
+ .login-vbox .pub-login-vbox,
+ .login-vbox .res-login-vbox,
+ .login-vbox .adm-login-vbox{
+    -fx-background-color: #ffb200;
+    -fx-effect:  dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 4);
+ }
+
+ .login-vbox .label{
+    -fx-text-fill: WHITE;
+    -fx-font-family: "Roboto Bold";
+    -fx-font-size: 18px;
+ }
+
+ .login-vbox .glyph-icon{
+    -fx-fill: WHITE;
+    -glyph-size: 50px;
+ }
+
+ .login-vbox .pub-login-vbox:hover,
+ .login-vbox .res-login-vbox:hover,
+ .login-vbox .adm-login-vbox:hover,
+ .login-vbox .pub-login-vbox:hover .label,
+ .login-vbox .res-login-vbox:hover .label,
+ .login-vbox .adm-login-vbox:hover .label,
+ .login-vbox .pub-login-vbox:hover .glyph-icon,
+ .login-vbox .res-login-vbox:hover .glyph-icon,
+ .login-vbox .adm-login-vbox:hover .glyph-icon{
+    -fx-cursor: hand;
+    -fx-text-fill: BLACK;
+    -fx-fill: BLACK;
+ }
+/********************************************************************************
+  *                                                                             *
+  * Galeri Aktivitas fx                                                         *
+  *                                                                             *
+  ******************************************************************************/
+  .galeriAktivitas-scroll-pane {
+    -fx-background-color: derive(#ffb200, -20%);
+  }
+
+/********************************************************************************
+  *                                                                             *
+  * SIGN UP FORM FXML                                                           *
+  *                                                                             *
+  ******************************************************************************/
+  .signUp-form-border-pane .signUp-title{
+    -fx-text-fill: WHITE;
+    -fx-font-family: "Roboto Bold";
+    -fx-font-size: 18px;
+  }
+  .signUp-form-border-pane .jfx-combo-box .label{
+    -fx-text-fill: WHITE;
+   }
+   .signUp-form-border-pane .jfx-combo-box:focused .label{
+       -fx-text-fill: WHITE;
+  }
+ /*******************************************************************************
+  *                                                                             *
+  * LOGIN FORM FXML                                                             *
+  *                                                                             *
+  ******************************************************************************/
+  .login-credentials-vBox .label{
+      -fx-text-fill: WHITE;
+      -fx-font-family: "Roboto Bold";
+      -fx-font-size: 18px;
+   }
+  .link-signUp-jfx-button{
+    -fx-text-fill: WHITE;
+    -fx-font-size: 12.0px;
+  }
+  .link-signUp-jfx-button:hover,
+  .link-signUp-jfx-button:armed{
+    -fx-text-fill: #4286f4;
+  }
+
+  .login-jfx-button {
+    -fx-background-color: #4286f4;
+    -fx-text-fill: WHITE;
+    -fx-rippler-fill: #3463af;
+  }
+
+  .login-jfx-button:armed,
+  .login-jfx-button:hover {
+    -fx-text-fill: BLACK;
+  }
 
 /*******************************************************************************
  *                                                                             *
@@ -405,15 +508,18 @@
 *                                                                              *
 *******************************************************************************/
 
-.jfx-text-field, .jfx-password-field, .jfx-text-area {
+.jfx-text-field, .jfx-password-field, .jfx-text-area, .jfx-combo-box {
     -fx-background-color: transparent;
     -fx-font-weight: BOLD;
-    -fx-prompt-text-fill: #808080;
+    -fx-prompt-text-fill: WHITE;
     -fx-alignment: top-left;
     -fx-max-width: 300.0;
     -fx-pref-width: 300.0;
-    -jfx-focus-color: #4059A9;
-    -jfx-unfocus-color: #4d4d4d;
+    -jfx-focus-color: #000000;
+    -jfx-unfocus-color: #ffffff;
+}
+.jfx-text-field:focused, .jfx-password-field:focused, .jfx-text-area:focused, .jfx-combo-box:focused {
+    -fx-prompt-text-fill: WHITE;
 }
 
 .jfx-text-area .viewport {
@@ -426,36 +532,42 @@
 *                                                                              *
 *******************************************************************************/
 
-.jfx-list-cell {
+.side-list .jfx-list-cell {
     -fx-background-insets: 0.0;
+    -fx-text-fill: BLACK;
+    -fx-font-family: "Roboto Bold";
+    -fx-background-color: #ffb200;
+}
+.side-list .jfx-list-cell .label{
+    -fx-text-fill: WHITE;
+}
+.side-list .jfx-list-cell:odd,
+.side-list .jfx-list-cell:even {
+    -fx-background-color: #ffb200;
+}
+
+.side-list .jfx-list-cell:filled:hover,
+.side-list .jfx-list-cell:selected .label {
+    -fx-cursor: hand;
     -fx-text-fill: BLACK;
 }
 
-.jfx-list-cell:odd,
-.jfx-list-cell:even {
-    -fx-background-color: WHITE;
-}
-
-.jfx-list-cell:filled:hover,
-.jfx-list-cell:selected .label {
-    -fx-text-fill: black;
-}
-
-.jfx-list-cell .jfx-rippler {
+.side-list .jfx-list-cell .jfx-rippler {
     -jfx-rippler-fill: #ffb200;
 }
 
-.jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
-.jfx-list-cell:even:selected > .jfx-rippler > StackPane {
-    -fx-background-color: rgba(255.0, 178.0, 0.0, 0.2);
+.side-list .jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
+.side-list .jfx-list-cell:even:selected > .jfx-rippler > StackPane {
+    -fx-background-color: derive(#ffb200,-20%);
 }
 
-.jfx-list-view {
+.side-list{
     -fx-background-insets: 0.0;
     -jfx-cell-horizontal-margin: 0.0;
     -jfx-cell-vertical-margin: 5.0;
-    -jfx-vertical-gap: 10.0;
+    -jfx-vertical-gap: 10;
     -jfx-expanded: false;
+    -fx-background-color:#ffb200;
 }
 
 .custom-jfx-list-view .jfx-list-cell:odd:selected > .jfx-rippler > StackPane,
@@ -784,7 +896,7 @@
 
 .jfx-decorator .resize-border {
     -fx-border-color: -fx-decorator-color;
-    -fx-border-width: 0 4 4 4;
+    -fx-border-width: 0 0 0 0;
 }
 
 /*******************************************************************************
@@ -945,6 +1057,7 @@
  ******************************************************************************/
 
 .scroll-pane {
+    -fx-background-color: derive(#ffb200, -20%);
     -fx-background-insets: 0;
     -fx-padding: 0;
 }
@@ -964,28 +1077,28 @@
 *******************************************************************************/
 
 .error-label {
-    -fx-text-fill: #D34336;
+    -fx-text-fill: #ff1616;
     -fx-font-size: 0.75em;
     -fx-font-weight: bold;
 }
 
 .error-icon {
-    -fx-fill: #D34336;
+    -fx-fill: #ff1616;
     -fx-font-size: 1.0em;
 }
 
 .jfx-text-field:error, .jfx-password-field:error, .jfx-text-area:error, .jfx-combo-box:error {
-    -jfx-focus-color: #D34336;
-    -jfx-unfocus-color: #D34336;
+    -jfx-focus-color: #ff1616;
+    -jfx-unfocus-color: #ff1616;
 }
 
 .jfx-text-field .error-label, .jfx-password-field .error-label, .jfx-text-area .error-label {
-    -fx-text-fill: #D34336;
+    -fx-text-fill: #ff1616;
     -fx-font-size: 0.75em;
 }
 
 .jfx-text-field .error-icon, .jfx-password-field .error-icon, .jfx-text-area .error-icon {
-    -fx-fill: #D34336;
+    -fx-fill: #ff1616;
     -fx-font-size: 1.0em;
 }
 

@@ -13,7 +13,8 @@
     <orderEntry type="library" name="Gradle: com.jfoenix:jfoenix:1.10.0" level="project" />
     <orderEntry type="library" name="Gradle: org.xerial:sqlite-jdbc:3.21.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jooq:jooq:3.10.1" level="project" />
-    <orderEntry type="library" name="Gradle: de.jensd:fontawesomefx-commons:9.1.2" level="project" />
+    <orderEntry type="library" name="Gradle: de.jensd:fontawesomefx:8.9" level="project" />
+    <orderEntry type="library" name="Gradle: org.jasypt:jasypt:1.9.2" level="project" />
     <orderEntry type="library" name="Gradle: io.datafx:core:8.0.1" level="project" />
   </component>
 </module>
