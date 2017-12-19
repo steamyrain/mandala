@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="gui.components.TentangKami"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+      <JFXTextArea layoutX="81.0" layoutY="108.0" text="Reinhard Aditya Petradi    140810140011&#10;Fransiskus Leo Bimantara  140810140047&#10;Samba Nugraha                 140810140053&#10;Bintang Daniel N                140810140055" />
+

@@ -31,7 +31,7 @@ public class GaleriNaskahController {
     @PostConstruct
     public void init(){
     ArrayList<Node> children = new ArrayList<>();
-    String path = "C:\\Users\\Reinhard\\Downloads\\nice wall m8\\";
+    String path = "D:\\Projects\\Pilahan";
     File folder = new File(path);
     Integer i = 0;
     File[] listOfFiles = folder.listFiles();
@@ -78,7 +78,7 @@ public class GaleriNaskahController {
 
         ImageView imageView = null;
         try {
-            final Image image = new Image(new FileInputStream(imageFile), 250, 0, true,
+            final Image image = new Image(new FileInputStream(imageFile), 600, 0, true,
                     true);
             imageView = new ImageView(image);
             imageView.setFitWidth(image.getWidth());
