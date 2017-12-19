@@ -21,7 +21,7 @@
                                 </JFXHamburger>
                             </StackPane>
                         </JFXRippler>
-                        <Label>Ciburuy Desktop App</Label>
+                        <Label>Mandala</Label>
                     </leftItems>
                     <rightItems>
                         <JFXTextField fx:id="searchTextField" labelFloat="false" maxWidth="10.0" minWidth="10" prefHeight="31.0" prefWidth="10" promptText="Search" visible="false">
