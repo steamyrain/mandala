@@ -236,11 +236,14 @@ public class DBHandler {
         DSLContext exec = getExecutor();
         Record1<?> email = null;
         try {
-            email = exec.select(Tables.USERS.EMAIL)
-                    .from(Tables.USERS)
-                    .where(Tables.USERS.EMAIL.eq(account.getEmail()))
-                    .fetchOne();
-            if(email != null) {
+            if(!account.getEmail().equals(oldAcc.getEmail())) {
+                email = exec.select(Tables.USERS.EMAIL)
+                        .from(Tables.USERS)
+                        .where(Tables.USERS.EMAIL.eq(account.getEmail()))
+                        .fetchOne();
+            }
+            if(email == null) {
+                System.out.println(account.getNamaDepan());
                 exec.update(Tables.USERS)
                         .set(Tables.USERS.EMAIL, account.getEmail())
                         .set(Tables.USERS.FIRSTNAME, account.getNamaDepan())
@@ -251,6 +254,9 @@ public class DBHandler {
             }
             else{
                 exec.close();
+                System.out.println(email);
+                System.out.println(account.getEmail());
+                System.out.println(oldAcc.getEmail());
                 return "E-mail telah terdaftar";
             }
         } catch (Exception e) {

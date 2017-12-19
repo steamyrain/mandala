@@ -25,7 +25,7 @@ public class TestBidirectionalBind extends Application {
         Label show = new Label();
         show.textProperty().bind(Chosen.getAccount().emailProperty());
         email.setPrefWidth(50.0);
-        email.textProperty().bindBidirectional(Chosen.getAccount().emailProperty());
+        //email.textProperty().bindBidirectional(Chosen.getAccount().emailProperty());
         BorderPane root = new BorderPane();
         VBox box = new VBox();
         box.getChildren().addAll(email,show);

@@ -59,8 +59,8 @@
                       <Insets />
                   </GridPane.margin>
               </JFXTextField>
-            <JFXTextField fx:id="namaDepanTextField" promptText="Nama Depan" />
-            <JFXTextField fx:id="namaBelakangTextField" promptText="Nama Belakang" />
+            <JFXTextField fx:id="namaDepanTextField" labelFloat="true" promptText="Nama Depan" maxWidth="291.0" minWidth="135.0" prefHeight="25.0" prefWidth="139.0" />
+            <JFXTextField fx:id="namaBelakangTextField" labelFloat="true" promptText="Nama Belakang" maxWidth="291.0" minWidth="135.0" prefHeight="25.0" prefWidth="139.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">

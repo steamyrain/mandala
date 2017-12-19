@@ -45,7 +45,7 @@ public class Account implements Disposable{
         account.setNamaBelakang(usersRecord.getLastname());
         account.setUserType(rolesRecord.getRole());
         account.setEmail(usersRecord.getEmail());
-        account.setCountryID(usersRecord.getCountryid());
+        account.setCountryID(usersRecord.getCountryid()-1);
         return account;
     }
     public void setPassword(String password){ this.password.set(password);}
