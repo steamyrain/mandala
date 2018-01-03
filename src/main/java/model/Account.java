@@ -38,7 +38,18 @@ public class Account implements Disposable{
         account.setUserType(acc.getUserType());
         return account;
     }
-
+    public void copy(Account acc) {
+        setEmail(acc.getEmail());
+        setNamaDepan(acc.getNamaDepan());
+        setNamaBelakang(acc.getNamaBelakang());
+        setCountryID(acc.getCountryID());
+        setUserType(acc.getUserType());
+    }
+    public Account clone() {
+        Account newAcc = new Account();
+        newAcc.copy(this);
+        return newAcc;
+    }
     public static Account createAcc(UsersRecord usersRecord, RolesRecord rolesRecord){
         Account account = new Account();
         account.setNamaDepan(usersRecord.getFirstname());

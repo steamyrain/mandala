@@ -243,14 +243,27 @@ public class DBHandler {
                         .fetchOne();
             }
             if(email == null) {
-                System.out.println(account.getNamaDepan());
-                exec.update(Tables.USERS)
-                        .set(Tables.USERS.EMAIL, account.getEmail())
-                        .set(Tables.USERS.FIRSTNAME, account.getNamaDepan())
-                        .set(Tables.USERS.LASTNAME, account.getNamaBelakang())
-                        .set(Tables.USERS.COUNTRYID, account.getCountryID()+1)
-                        .where(Tables.USERS.EMAIL.equal(oldAcc.getEmail()))
-                        .executeAsync();
+                if(!account.getEmail().equals(oldAcc.getEmail())) {
+                    exec.update(Tables.USERS)
+                            .set(Tables.USERS.EMAIL, account.getEmail())
+                            .set(Tables.USERS.FIRSTNAME, account.getNamaDepan())
+                            .set(Tables.USERS.LASTNAME, account.getNamaBelakang())
+                            .set(Tables.USERS.COUNTRYID, account.getCountryID() + 1)
+                            .where(Tables.USERS.EMAIL.equal(oldAcc.getEmail()))
+                            .executeAsync();
+                    exec.update(Tables.LOGINS)
+                            .set(Tables.LOGINS.EMAIL, account.getEmail())
+                            .where(Tables.LOGINS.EMAIL.equal(oldAcc.getEmail()))
+                            .executeAsync();
+                }
+                else{
+                    exec.update(Tables.USERS)
+                            .set(Tables.USERS.FIRSTNAME, account.getNamaDepan())
+                            .set(Tables.USERS.LASTNAME, account.getNamaBelakang())
+                            .set(Tables.USERS.COUNTRYID, account.getCountryID() + 1)
+                            .where(Tables.USERS.EMAIL.equal(oldAcc.getEmail()))
+                            .executeAsync();
+                }
             }
             else{
                 exec.close();

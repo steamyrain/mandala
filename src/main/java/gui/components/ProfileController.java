@@ -52,7 +52,7 @@ public class ProfileController {
     @PostConstruct
     public void init() {
         //initComponents();
-        buffAccount = Chosen.getAccount();
+        buffAccount = Chosen.getAccount().clone();
         currAcc = Account.createAcc();
         usernameLabel.setText(buffAccount.getNamaDepan() + " " + buffAccount.getNamaBelakang());
         emailTextField.setText(buffAccount.getEmail());
@@ -60,7 +60,7 @@ public class ProfileController {
         namaDepanTextField.setText(buffAccount.getNamaDepan());
         currAcc.namaDepanProperty().bind(namaDepanTextField.textProperty());
         namaBelakangTextField.setText(buffAccount.getNamaBelakang());
-        currAcc.namaDepanProperty().bind(namaBelakangTextField.textProperty());
+        currAcc.namaBelakangProperty().bind(namaBelakangTextField.textProperty());
         negara.getItems().addAll(DBHandler.fetchCountries());
         FXUtil.autoCompleteComboBoxPlus(negara, (typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
         if (currAcc.getCountryID() != null) negara.getSelectionModel().select(buffAccount.getCountryID());
@@ -105,12 +105,18 @@ public class ProfileController {
     }
     @FXML
     private void save(){
+        System.out.println("Curr Acc Email "+currAcc.getEmail());
+        System.out.println("Buff Acc Email "+buffAccount.getEmail());
+        System.out.println("Curr Acc Fname "+currAcc.getNamaDepan());
+        System.out.println("Buff Acc Fname "+buffAccount.getNamaDepan());
         String error = DBHandler.update(currAcc,buffAccount);
         if (error != null) {
             System.out.println("Error: " + error);
         } else {
             Chosen.setAccount(currAcc);
-            buffAccount = Chosen.getAccount();
+            System.out.println("Chosen Acc Email : "+Chosen.getAccount().getEmail());
+            System.out.println("Chosen Acc LName : "+Chosen.getAccount().getNamaBelakang());
+            buffAccount= Chosen.getAccount().clone();
         }
     }
     @FXML
@@ -120,7 +126,6 @@ public class ProfileController {
         namaDepanTextField.setText(buffAccount.getNamaDepan());
         namaBelakangTextField.setText(buffAccount.getNamaBelakang());
         negara.getSelectionModel().select(buffAccount.getCountryID().intValue());
-        System.out.println(Chosen.getAccount().getEmail());
     }
 
 }
