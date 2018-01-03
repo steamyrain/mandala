@@ -46,7 +46,6 @@ public class Chosen {
         } catch (FlowException e) {
             e.printStackTrace();
         }
-        System.out.println("FINISHED LOADING: " + controllerName); //TODO -del
     }
     public static void goTo(String actionID) {
         FlowHandler contentFlowHandler = (FlowHandler)Chosen.context.getRegisteredObject("ContentFlowHandler");
@@ -57,6 +56,5 @@ public class Chosen {
         } catch (FlowException e) {
             e.printStackTrace();
         }
-        System.out.println("FINISHED LOADING: " + actionID); //TODO -del
     }
 }

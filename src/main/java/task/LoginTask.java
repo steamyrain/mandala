@@ -10,10 +10,12 @@ public class LoginTask extends Task<String> {
 
     private String email;
     private String password;
+    private String role;
 
-    public LoginTask(String email, String password) {
+    public LoginTask(String email, String password,String role) {
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
     @Override
@@ -33,11 +35,11 @@ public class LoginTask extends Task<String> {
         updateProgress(20,max);
 
         updateMessage("Checking if user exists and logging in...");
-        String error = DBHandler.login(email,password);
+        String error = DBHandler.login(email,password,role);
         if (error != null) {
             return error;
         }
-        updateProgress(100,max);
+        updateProgress(70,max);
         //return null if no error
         return null;
     }

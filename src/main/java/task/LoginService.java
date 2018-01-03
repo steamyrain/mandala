@@ -6,12 +6,13 @@ import javafx.concurrent.Task;
 public class LoginService extends Service<String>{
     private String email;
     private String password;
-
+    private String role;
     public LoginService() {}
 
-    public LoginService(String email, String password) {
+    public LoginService(String email, String password,String role) {
         setEmail(email);
         setPassword(password);
+        setRole(role);
     }
 
     public String getEmail() {
@@ -22,6 +23,8 @@ public class LoginService extends Service<String>{
         return password;
     }
 
+    public String getRole(){ return role;}
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -30,8 +33,10 @@ public class LoginService extends Service<String>{
         this.password = password;
     }
 
+    public void setRole(String role){this.role = role;}
+
     @Override
     protected Task<String> createTask() {
-        return new LoginTask(email, password);
+        return new LoginTask(email, password, role);
     }
 }

@@ -57,11 +57,13 @@ public class SideMenuController {
         Label profile = Creator.createLabel("Profile");
         Label login = Creator.createLabel("Login");
         Label signUp = Creator.createLabel("Sign Up");
-        Label galeriAktivitas = Creator.createLabel("Galeri Aktivitas");
-        Label galeriNaskah = Creator.createLabel("Galeri Naskah");
+        Label adminPanel = Creator.createLabel("Admin Panel");
+        Label galeriAktivitas = Creator.createLabel("Galeri");
+        Label galeriNaskah = Creator.createLabel("Naskah");
         Label hasilPenelitian = Creator.createLabel("Hasil Penelitian");
         Label tentangKami = Creator.createLabel("Tentang Kami");
         Label permainan = Creator.createLabel("Permainan");
+        context.register("AdminPanel",adminPanel);
         context.register("Daftar",daftar);
         context.register("Profile",profile);
         context.register("Login",login);
@@ -75,6 +77,7 @@ public class SideMenuController {
         sideList.getItems().addAll(login,signUp);
 
         bindNodeToController(login, LoginController.class,contentFlow);
+        bindNodeToController(adminPanel,AdminPanelController.class,contentFlow);
         bindNodeToController(daftar, BukuTamuController.class,contentFlow);
         bindNodeToController(profile, ProfileController.class,contentFlow);
         bindNodeToController(signUp, SignUpFormController.class,contentFlow);

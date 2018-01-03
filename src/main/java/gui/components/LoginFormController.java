@@ -30,12 +30,14 @@ public class LoginFormController {
     private StringProperty email = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
     private LoginService loginService = new LoginService();
+    private String loginAs = null;
     @PostConstruct
     public void init() {
         sideList = (JFXListView) context.getRegisteredObject("SideList");
         sideList.getSelectionModel().clearSelection();
         email.bind(emailTextField.textProperty());
         password.bind(passwordTextField.textProperty());
+        loginAs = (String)context.getRegisteredObject("LoginAs");
     }
     @FXML
     private void goToSignUp(){
@@ -51,6 +53,7 @@ public class LoginFormController {
         loginService.reset();
         loginService.setEmail(email.getValue());
         loginService.setPassword(password.getValue());
+        loginService.setRole(loginAs);
 
         loginService.setOnSucceeded(t -> {
             String error = (String)t.getSource().getValue();

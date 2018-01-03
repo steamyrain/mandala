@@ -72,6 +72,7 @@ public class ProfileController {
     private void initSideBar(){
         JFXListView sideList = (JFXListView) context.getRegisteredObject("SideList");
         Label profile = (Label) context.getRegisteredObject("Profile");
+        Label adminPanel = (Label) context.getRegisteredObject("AdminPanel");
         Label galeriAktivitas = (Label) context.getRegisteredObject("GaleriAktivitas");
         Label galeriNaskah = (Label) context.getRegisteredObject("GaleriNaskah");
         Label hasilPenelitian = (Label) context.getRegisteredObject("HasilPenelitian");
@@ -80,7 +81,13 @@ public class ProfileController {
         Label login = (Label) context.getRegisteredObject("Login");
         if (sideList.getItems().contains(login)) {
             sideList.getItems().clear();
-            sideList.getItems().addAll(profile,hasilPenelitian,galeriAktivitas,galeriNaskah,permainan,tentangKami);
+            if (context.getRegisteredObject("LoginAs").equals("ADMIN")) {
+                sideList.getItems().addAll(profile,adminPanel,hasilPenelitian,galeriAktivitas,galeriNaskah,permainan,tentangKami);
+            }
+            else {
+                sideList.getItems().addAll(profile, hasilPenelitian, galeriAktivitas, galeriNaskah, permainan, tentangKami);
+            }
+
         }
     }
     private void initRightToolbar(){

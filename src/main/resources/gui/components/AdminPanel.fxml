@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox maxHeight="600" maxWidth="600" spacing="10">
+        <children>
+            <HBox alignment="CENTER">
+                <Label styleClass="title-label" text="Tabel Login">Read Only Tree Table View</Label>
+                <Label fx:id="treeTableViewCount" minWidth="80" styleClass="title-label" />
+                <JFXButton fx:id="treeTableViewAdd" buttonType="FLAT" text="+" />
+                <JFXButton fx:id="treeTableViewRemove" buttonType="FLAT" text="-" />
+                <StackPane HBox.hgrow="ALWAYS">
+                    <StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT">
+                        <JFXTextField fx:id="searchField" promptText="Search..." />
+                    </StackPane>
+                </StackPane>
+            </HBox>
+            <JFXTreeTableView fx:id="treeTableView">
+                <columns>
+                    <JFXTreeTableColumn fx:id="firstNameColumn" minWidth="133" prefWidth="133" resizable="false" text="Email" />
+                    <JFXTreeTableColumn fx:id="lastNameColumn" minWidth="133" resizable="false" text="Hash" />
+                    <JFXTreeTableColumn fx:id="passwordColumn" minWidth="133" resizable="false" text="Password" />
+                </columns>
+            </JFXTreeTableView>
+
+            <HBox alignment="CENTER">
+                <Label styleClass="title-label" text="Tabel Akun">Editable Tree Table View</Label>
+                <Label fx:id="editableTreeTableViewCount" styleClass="title-label" />
+                <StackPane HBox.hgrow="ALWAYS">
+                    <StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT">
+                        <JFXTextField fx:id="searchField2" promptText="Search..." />
+                    </StackPane>
+                </StackPane>
+            </HBox>
+            <JFXTreeTableView fx:id="editableTreeTableView">
+                <columns>
+                    <JFXTreeTableColumn fx:id="firstNameEditableColumn" minWidth="133" resizable="false" text="First Name" />
+                    <JFXTreeTableColumn fx:id="lastNameEditableColumn" minWidth="133" resizable="false" text="Last Name" />
+                    <JFXTreeTableColumn fx:id="countryEditableColumn" minWidth="133" resizable="false" text="Country" />
+                </columns>
+            </JFXTreeTableView>
+        </children>
+    </VBox>
+</StackPane>

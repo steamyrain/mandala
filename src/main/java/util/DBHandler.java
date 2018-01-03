@@ -85,6 +85,54 @@ public class DBHandler {
 
         return null;
     }
+    public static String login(String email, String password,String role) {
+        DSLContext exec = null;
+        String fetchSalt = null;
+        String fetchHash= null;
+        StrongPasswordEncryptor check = new StrongPasswordEncryptor();
+        UsersRecord resultUsers = null;
+        RolesRecord resultRoles = null;
+        Account loggedAcc=null;
+        try {
+            exec = DBHandler.getExecutor();
+            LoginsRecord resultLogins = exec.selectFrom(Tables.LOGINS).where(Tables.LOGINS.EMAIL.eq(email)).fetchAny();
+            if (resultLogins == null) {
+                exec.close();
+                return "User not found";
+            }
+            else{
+                resultUsers = exec.selectFrom(Tables.USERS).where(Tables.USERS.EMAIL.eq(email)).fetchAny();
+                resultRoles = exec.selectFrom(Tables.ROLES).where(Tables.ROLES.USERID.eq(resultUsers.getValue(Tables.USERS.ID))).fetchAny();
+                fetchSalt = resultLogins.getValue(Tables.LOGINS.PASSWORDSALT);
+                fetchHash = resultLogins.getValue(Tables.LOGINS.PASSWORDHASH);
+                if(!check.checkPassword(fetchSalt+password,fetchHash)){
+                    System.out.println(check.checkPassword(fetchSalt+password,fetchHash));
+                    exec.close();
+                    return "Password Do Not Match";
+                }
+                if((!resultRoles.getValue(Tables.ROLES.ROLE).equals(role))
+                        &&!resultRoles.getValue(Tables.ROLES.ROLE).equals("ADMIN")
+                        &&!(resultRoles.getValue(Tables.ROLES.ROLE).equals("PENELITI")
+                        &&(role.equals("UMUM")||role.equals("PENELITI")))){
+                    exec.close();
+                    return "Role Doesnt Match";
+                }
+                if(resultRoles.getValue(Tables.ROLES.STATUS).equals("PENDING")){
+                    exec.close();
+                    return "Registeration Status Pending, Please Confirm Your Registeration To Nearest Admin!";
+                }
+                if(resultUsers!=null&&resultRoles!=null)loggedAcc = Account.createAcc(resultUsers,resultRoles);
+                if(loggedAcc!=null)Chosen.setAccount(loggedAcc);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error in logging in";
+        } finally {
+            if (exec != null) exec.close();
+        }
+
+        return null;
+    }
     public static byte[] serialize(Serializable object) {
         ByteArrayOutputStream baos;
         ObjectOutputStream oos;
